@@ -109,14 +109,33 @@
       from { transform: translateY(30px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
-
-    .intro img:hover{
+    .intro img:hover {
       filter: drop-shadow(15px 15px 15px rgb(240, 240, 101));
       transition: 1s ease-in-out;
       cursor: pointer;
     }
-
-    
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .tool-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: rgba(0, 255, 204, 0.1);
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    .tool-item:hover {
+      background-color: rgba(0, 255, 204, 0.2);
+    }
+    .tool-logo {
+      width: 28px;
+      height: 28px;
+    }
   </style>
 </head>
 <body>
@@ -144,9 +163,10 @@
         <p>College: B.P. Poddar Institute Of Management And Technology</p>
         <p>Dept: BCA</p>
         <p>Phone: +91 **********</p>
-        <p>Location: Kolkata,india</p>
-            <a href="https://linkedin.com/in/debasis-biswas" target="_blank"><img src="https://imgs.search.brave.com/GpB5WQlesvec2MXDXDV3SmKb0pzSJzyH667WAzbxGcs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9j/L2NhL0xpbmtlZElu/X2xvZ29faW5pdGlh/bHMucG5n" alt="MY linkedin" width="69px"></a>
-
+        <p>Location: Kolkata, India</p>
+        <a href="https://linkedin.com/in/debasis-biswas" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" width="69px">
+        </a>
       </div>
     </section>
 
@@ -157,7 +177,9 @@
       </div>
     </section>
 
-   <section id="skills">
+    
+
+<section id="skills">
   <h2>Skills & Tools</h2>
   <div class="card">
 
@@ -213,6 +235,8 @@
   </div>
 </section>
 
+<!-- ...rest of your page continues the same... -->
+
 
     <section id="projects">
       <h2>Projects & Labs</h2>
@@ -228,7 +252,7 @@
       <h2>Certifications & Platforms</h2>
       <div class="card">
         <p>TryHackMe (In Progress), eJPT (Planned), OSCP (Future Goal)</p>
-        <p>Cisco Certifications:Introduction to Cybersecurity, Network addressing and basic troubleshooting</p>
+        <p>Cisco Certifications: Introduction to Cybersecurity, Network Addressing and Basic Troubleshooting</p>
         <p>PortSwigger Academy: [Progress: XX%]</p>
       </div>
     </section>
@@ -250,15 +274,13 @@
   <script>
     const typingText = document.getElementById("typing-text");
     const roles = [
-      "Hi, i'm DEBASIS",
+      "Hi, I'm DEBASIS",
       "I'm a Networking Enthusiast 💻",
       "I'm a Linux Troubleshooter 🐧",
       "I'm a Future Penetration Tester 🛡️",
       "I'm a Cybersecurity Explorer 🔐"
     ];
-
     let roleIndex = 0;
-
     function typeRole() {
       typingText.style.width = '0';
       typingText.textContent = roles[roleIndex];
@@ -267,7 +289,6 @@
       typingText.style.animation = 'typing 3s steps(40, end) forwards, blink 0.75s step-end infinite';
       roleIndex = (roleIndex + 1) % roles.length;
     }
-
     typeRole();
     setInterval(typeRole, 4000);
   </script>
