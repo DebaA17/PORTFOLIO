@@ -42,4 +42,3 @@ please report it responsibly to:
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
-# Trigger for GitHub contribution
