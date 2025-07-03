@@ -1,0 +1,11 @@
+# security.txt for debasisbiswas.me
+
+Contact: mailto:admin@debasisbiswas.me
+Expires: 2025-12-31T23:59:00.000Z
+Preferred-Languages: en
+Canonical: https://debasisbiswas.me/.well-known/security.txt
+
+# Notes
+This site is managed by Debasis Biswas.
+If you discover a vulnerability, please report it responsibly.
+Thank you for helping keep the internet safer.
