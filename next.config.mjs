@@ -54,7 +54,7 @@ const nextConfig = {
               "default-src 'self'",
               
               // Script sources - carefully controlled
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com https://static.cloudflareinsights.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://static.cloudflareinsights.com",
               
               // Style sources - allow inline styles for React
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",

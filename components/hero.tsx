@@ -3,11 +3,9 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { ChevronDown, Terminal } from "lucide-react"
-import Script from "next/script"
 
 export default function Hero() {
   const scrollRef = useRef<HTMLDivElement>(null)
-  const [particlesLoaded, setParticlesLoaded] = useState(false)
 
   // Handle scroll down button click
   const scrollToAbout = () => {
@@ -19,26 +17,6 @@ export default function Hero() {
       })
     }
   }
-
-  // Initialize particle background using a simpler approach with Script component
-  useEffect(() => {
-    // Simplified particle initialization
-    if (particlesLoaded && typeof window !== "undefined" && window.tsParticles) {
-      window.tsParticles.load("tsparticles", {
-        particles: {
-          number: { value: 30 },
-          color: { value: "#3b82f6" },
-          shape: { type: "circle" },
-          opacity: { value: 0.5, random: true },
-          size: { value: 3, random: true },
-          move: { enable: true, speed: 1 },
-          line_linked: { enable: true, distance: 150, color: "#3b82f6", opacity: 0.2 }
-        }
-      }).catch(() => {
-        // Silently fail if particles can't load
-      })
-    }
-  }, [particlesLoaded])
 
   // Initialize typewriter effect with improved speed
   useEffect(() => {
@@ -99,20 +77,25 @@ export default function Hero() {
 
   return (
     <>
-      {/* Load tsParticles from CDN */}
-      <Script
-        src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"
-        onLoad={() => setParticlesLoaded(true)}
-        strategy="afterInteractive"
-      />
-
       <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-        {/* Particle background */}
+        {/* Simple particle background */}
         <div
           id="tsparticles"
-          className="absolute inset-0 z-0"
-          style={{ position: "absolute", width: "100%", height: "100%" }}
-        ></div>
+          className="absolute inset-0 z-0 overflow-hidden"
+        >
+          {/* Simple CSS particles */}
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div
+              key={i}
+              className="simple-particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 6}s`,
+              }}
+            />
+          ))}
+        </div>
 
         {/* Fallback background gradient in case particles fail */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a14] to-[#0c0c1a] z-[-1]"></div>

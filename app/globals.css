@@ -387,6 +387,24 @@
   background: #2563eb;
 }
 
+/* Simple particle animation */
+.simple-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.simple-particle:nth-child(odd) {
+  animation-delay: -2s;
+}
+
+.simple-particle:nth-child(even) {
+  animation-delay: -4s;
+}
+
 /* Active nav link */
 .nav-link.active {
   color: #3b82f6;

@@ -91,15 +91,12 @@ export default function Projects() {
               >
                 <div className="relative h-48 overflow-hidden">
                   {/* Project image */}
-                  <div
-                    className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center"
-                  >
-                    <div className="text-4xl font-bold text-blue-500/50">
-                      {project.title.charAt(0)}
-                    </div>
+                  <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                    <div className="text-4xl font-bold text-blue-500/50">{project.title.charAt(0)}</div>
                   </div>
-                  {/* <img
-                    src={project.image}
+                  {/* Placeholder for project image
+                  <img
+                    src="/placeholder.jpg"
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   /> */}
