@@ -22,91 +22,21 @@ export default function Hero() {
 
   // Initialize particle background using a simpler approach with Script component
   useEffect(() => {
-    // Only run this effect if particles script has loaded
-    if (!particlesLoaded) return
-
-    // Function to initialize particles
-    const initParticles = () => {
-      try {
-        if (typeof window !== "undefined" && window.tsParticles) {
-          window.tsParticles.load("tsparticles", {
-            fullScreen: {
-              enable: false,
-              zIndex: 0,
-            },
-            particles: {
-              number: {
-                value: 30,
-                density: {
-                  enable: true,
-                  value_area: 800,
-                },
-              },
-              color: {
-                value: "#3b82f6",
-              },
-              shape: {
-                type: "circle",
-              },
-              opacity: {
-                value: 0.5,
-                random: true,
-              },
-              size: {
-                value: 3,
-                random: true,
-              },
-              move: {
-                enable: true,
-                speed: 1,
-                direction: "none",
-                random: true,
-                straight: false,
-                out_mode: "out",
-              },
-              line_linked: {
-                enable: true,
-                distance: 150,
-                color: "#3b82f6",
-                opacity: 0.2,
-                width: 1,
-              },
-            },
-            interactivity: {
-              detect_on: "canvas",
-              events: {
-                onhover: {
-                  enable: true,
-                  mode: "grab",
-                },
-                resize: true,
-              },
-              modes: {
-                grab: {
-                  distance: 140,
-                  line_linked: {
-                    opacity: 0.5,
-                  },
-                },
-              },
-            },
-            retina_detect: true,
-          })
+    // Simplified particle initialization
+    if (particlesLoaded && typeof window !== "undefined" && window.tsParticles) {
+      window.tsParticles.load("tsparticles", {
+        particles: {
+          number: { value: 30 },
+          color: { value: "#3b82f6" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5, random: true },
+          size: { value: 3, random: true },
+          move: { enable: true, speed: 1 },
+          line_linked: { enable: true, distance: 150, color: "#3b82f6", opacity: 0.2 }
         }
-      } catch (error) {
-        console.error("Failed to initialize particles:", error)
-        // Fallback to no particles
-      }
-    }
-
-    // Initialize particles
-    initParticles()
-
-    // Cleanup function
-    return () => {
-      if (typeof window !== "undefined" && window.tsParticles) {
-        window.tsParticles.destroy("tsparticles")
-      }
+      }).catch(() => {
+        // Silently fail if particles can't load
+      })
     }
   }, [particlesLoaded])
 

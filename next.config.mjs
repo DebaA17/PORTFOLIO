@@ -11,12 +11,6 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'blob.v0.dev',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
         hostname: 'hebbkx1anhila5yf.public.blob.vercel-storage.com',
         port: '',
         pathname: '/**',
@@ -24,12 +18,6 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cdn.jsdelivr.net',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'unpkg.com',
         port: '',
         pathname: '/**',
       },
@@ -75,13 +63,13 @@ const nextConfig = {
               "font-src 'self' https://fonts.gstatic.com data:",
               
               // Image sources - comprehensive list
-              "img-src 'self' data: https: blob: https://hebbkx1anhila5yf.public.blob.vercel-storage.com https://blob.v0.dev",
+              "img-src 'self' data: https: blob: https://hebbkx1anhila5yf.public.blob.vercel-storage.com",
               
               // Media sources
               "media-src 'self' https: data: blob:",
               
               // Connection sources - API calls
-              "connect-src 'self' https: wss: https://api.ipify.org https://ipapi.co https://static.cloudflareinsights.com",
+              "connect-src 'self' https: wss: https://static.cloudflareinsights.com",
               
               // Worker sources
               "worker-src 'self' blob:",

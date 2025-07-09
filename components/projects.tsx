@@ -54,7 +54,7 @@ export default function Projects() {
       : projects.filter((project) => project.category === filter)
 
   return (
-    <section id="portfolio" className="py-20 bg-[#0a0a14]">
+    <section id="projects" className="py-20 bg-[#0a0a14]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -91,11 +91,18 @@ export default function Projects() {
               >
                 <div className="relative h-48 overflow-hidden">
                   {/* Project image */}
-                  <img
-                    src={project.image || "/placeholder.svg"}
+                  <div
+                    className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center"
+                  >
+                    <div className="text-4xl font-bold text-blue-500/50">
+                      {project.title.charAt(0)}
+                    </div>
+                  </div>
+                  {/* <img
+                    src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
+                  /> */}
 
                   {/* Overlay with links */}
                   <div className="absolute inset-0 bg-blue-900/80 flex items-center justify-center gap-4 opacity-0 hover:opacity-100 transition-opacity duration-300">

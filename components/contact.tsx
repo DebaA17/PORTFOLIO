@@ -1,10 +1,10 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Github, Linkedin, Mail, Send } from "lucide-react"
+
+import type React from "react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
