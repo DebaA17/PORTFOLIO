@@ -272,9 +272,9 @@ export default function NotFound() {
           <div className="text-xs text-green-600 pt-8 space-y-2 opacity-80 border-t border-green-400/20">
             <div className="flex items-center justify-center gap-2">
               <Shield className="w-4 h-4 animate-pulse" />
-              <span>DEBASIS BISWAS SECURITY SYSTEM v2.1.0</span>
+              <span>DEBASIS BISWAS SECURITY SYSTEM</span>
             </div>
-            <div>© 2024 - ALL UNAUTHORIZED ACCESS MONITORED & LOGGED</div>
+            <div>© 2025 - ALL UNAUTHORIZED ACCESS MONITORED & LOGGED</div>
             <div className="text-red-400 animate-pulse flex items-center justify-center gap-2">
               <AlertTriangle className="w-4 h-4" />
               <span>SECURITY INCIDENT LOGGED TO DATABASE</span>
