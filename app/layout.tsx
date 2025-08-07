@@ -81,10 +81,6 @@ export default function RootLayout({
           gtag('config', 'G-X31N429BP8');`}
         </script>
 
-<!-- 100% privacy-first analytics -->
-<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-
-
         {/* Microsoft Clarity */}
         <script type="text/javascript">
           {`(function(c,l,a,r,i,t,y){
