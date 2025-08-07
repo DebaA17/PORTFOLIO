@@ -1,0 +1,10 @@
+# security.txt for debasisbiswas.me
+
+
+Contact: mailto:forensic@debasisbiswas.me
+Preferred-Languages: en
+Canonical: https://debasisbiswas.me/.well-known/security.txt
+Policy: https://debasisbiswas.me/security-policy.html
+
+Expires: 2026-01-05T00:00:00Z
+
