@@ -67,6 +67,21 @@ export default function Skills() {
         { name: "Cryptography", level: 60 },
       ],
     },
+{
+  id: "cloud",
+  label: "Cloud & DevOps",
+  skills: [
+    { name: "Linux", level: 95 },
+    { name: "Azure", level: 70 },
+    { name: "VPS (Compute)", level: 95 },
+    { name: "Ansible", level: 70 },
+    { name: "CI/CD (DevOps)", level: 85 },
+    { name: "Caddy Server", level: 90 },
+    { name: "Nginx", level: 95 },
+    { name: "Cloud Security", level: 85 },
+  ],
+},
+
   ]
 
   return (
