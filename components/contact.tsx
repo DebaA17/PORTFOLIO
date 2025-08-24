@@ -73,8 +73,8 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "admin@debasisbiswas.me",
-      href: "mailto:admin@debasisbiswas.me",
+      value: "contact@debasisbiswas.me",
+      href: "mailto:contact@debasisbiswas.me",
     },
   ]
 
