@@ -74,6 +74,7 @@ export default function Skills() {
     { name: "Linux", level: 95 },
     { name: "Azure", level: 70 },
     { name: "VPS (Compute)", level: 95 },
+    { name: "Docker", level: 85 },
     { name: "Ansible", level: 70 },
     { name: "CI/CD (DevOps)", level: 85 },
     { name: "Caddy Server", level: 90 },
