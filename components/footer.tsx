@@ -26,7 +26,7 @@ export default function Footer() {
             >
               LinkedIn
             </a>
-            <a href="mailto:admin@debasisbiswas.me" className="text-gray-400 hover:text-blue-500 transition-colors">
+            <a href="mailto:contact@debasisbiswas.me" className="text-gray-400 hover:text-blue-500 transition-colors">
               Email
             </a>
           </div>
