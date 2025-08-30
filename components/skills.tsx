@@ -96,7 +96,7 @@ export default function Skills() {
 
         <div ref={ref} className="max-w-3xl mx-auto">
           <Tabs defaultValue="programming" className="w-full">
-            <TabsList className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 bg-[#111827] p-1 rounded-lg mb-8 overflow-x-auto">
+            <TabsList className="flex flex-wrap gap-2 bg-[#111827] p-1 rounded-lg mb-8">
               {skillCategories.map((category) => (
                 <TabsTrigger
                   key={category.id}
@@ -129,4 +129,3 @@ export default function Skills() {
     </section>
   )
 }
-
