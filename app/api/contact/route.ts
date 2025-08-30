@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
+import sanitizeHtml from "sanitize-html"
 
 // Rate limiting store (in production, use Redis or database)
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>()
@@ -52,10 +53,8 @@ function isRateLimited(ip: string): boolean {
 }
 
 function sanitizeInput(input: string): string {
-  return input
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
-    .replace(/<[^>]*>/g, "")
-    .trim()
+  // Remove all tags, allow only text
+  return sanitizeHtml(input, { allowedTags: [], allowedAttributes: {} }).trim()
 }
 
 function detectSpam(data: any): boolean {
