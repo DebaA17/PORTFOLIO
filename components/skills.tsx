@@ -67,21 +67,22 @@ export default function Skills() {
         { name: "Cryptography", level: 60 },
       ],
     },
-    {
-      id: "cloud",
-      label: "Cloud & DevOps",
-      skills: [
-        { name: "Linux", level: 95 },
-        { name: "Azure", level: 70 },
-        { name: "VPS (Compute)", level: 95 },
-        { name: "Docker", level: 85 },
-        { name: "Ansible", level: 70 },
-        { name: "CI/CD (DevOps)", level: 85 },
-        { name: "Caddy Server", level: 90 },
-        { name: "Nginx", level: 95 },
-        { name: "Cloud Security", level: 85 },
-      ],
-    },
+{
+  id: "cloud",
+  label: "Cloud & DevOps",
+  skills: [
+    { name: "Linux", level: 95 },
+    { name: "Azure", level: 70 },
+    { name: "VPS (Compute)", level: 95 },
+    { name: "Docker", level: 85 },
+    { name: "Ansible", level: 70 },
+    { name: "CI/CD (DevOps)", level: 85 },
+    { name: "Caddy Server", level: 90 },
+    { name: "Nginx", level: 95 },
+    { name: "Cloud Security", level: 85 },
+  ],
+},
+
   ]
 
   return (
@@ -96,7 +97,7 @@ export default function Skills() {
 
         <div ref={ref} className="max-w-3xl mx-auto">
           <Tabs defaultValue="programming" className="w-full">
-            <TabsList className="flex flex-wrap gap-2 bg-[#111827] p-1 rounded-lg mb-8">
+            <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-2 bg-[#111827] p-1 rounded-lg mb-8">
               {skillCategories.map((category) => (
                 <TabsTrigger
                   key={category.id}
@@ -112,9 +113,9 @@ export default function Skills() {
               <TabsContent key={category.id} value={category.id} className="space-y-6">
                 {category.skills.map((skill, index) => (
                   <div key={index} className="mb-6">
-                    <div className="flex justify-between mb-2 flex-wrap">
-                      <span className="font-medium text-sm sm:text-base">{skill.name}</span>
-                      <span className="text-blue-500 text-sm sm:text-base">{skill.level}%</span>
+                    <div className="flex justify-between mb-2">
+                      <span className="font-medium">{skill.name}</span>
+                      <span className="text-blue-500">{skill.level}%</span>
                     </div>
                     <div className="skill-bar">
                       <div className="skill-progress" data-width={`${skill.level}%`}></div>
@@ -128,4 +129,4 @@ export default function Skills() {
       </div>
     </section>
   )
-}
+}     
