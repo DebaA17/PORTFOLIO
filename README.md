@@ -18,8 +18,8 @@ I have experience working with a range of technologies, including:
 - **Backend**: Node.js, Express, Python, Flask
 - **Databases**: MongoDB, MySQL
 - **Version Control**: Git, GitHub
-- **Deployment**: Heroku, Netlify, Docker
-- **Other Tools**: Linux, Cloud, CI/CD, Ngix, Caddy etc
+- **Deployment**: Heroku, Netlify, VPS, Docker
+- **Other Tools**: Linux, Cloud, CI/CD, Ngix, Caddy, Ansible etc
 
 ## How to Reach Me
 
