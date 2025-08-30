@@ -52,10 +52,14 @@ function isRateLimited(ip: string): boolean {
 }
 
 function sanitizeInput(input: string): string {
-  return input
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
-    .replace(/<[^>]*>/g, "")
-    .trim()
+  let previous: string
+  do {
+    previous = input
+    input = input
+      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
+      .replace(/<[^>]*>/g, "")
+  } while (input !== previous)
+  return input.trim()
 }
 
 function detectSpam(data: any): boolean {
