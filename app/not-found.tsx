@@ -28,14 +28,12 @@ export default function NotFound() {
   useEffect(() => {
     setMounted(true)
 
-    // Time updater
     const updateTime = () => {
       setCurrentTime(new Date().toLocaleString())
     }
     updateTime()
     const timeInterval = setInterval(updateTime, 1000)
 
-    // Glitch effect
     const glitchChars = "!<>-_\\/[]{}—=+*^?#________"
     const originalText = "404"
     const glitchInterval = setInterval(() => {
@@ -51,7 +49,6 @@ export default function NotFound() {
       setTimeout(() => setGlitchText(originalText), 100)
     }, 2000)
 
-    // Scanning dots animation
     const scanningStates = ["Scanning", "Scanning.", "Scanning..", "Scanning..."]
     let scanIndex = 0
     const scanInterval = setInterval(() => {
@@ -59,7 +56,6 @@ export default function NotFound() {
       scanIndex = (scanIndex + 1) % scanningStates.length
     }, 500)
 
-    // Get IP and location info from ipapi.co
     fetch("https://ipapi.co/json/")
       .then((res) => res.json())
       .then((data) => {
@@ -98,21 +94,19 @@ export default function NotFound() {
 
   return (
     <div className="min-h-screen bg-[#0a0a14] text-green-400 font-mono flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Background Grid */}
       <div className="absolute inset-0 opacity-10">
         <div
           className="absolute inset-0"
           style={{
             backgroundImage: `
-            linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px)
-          `,
+              linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px)
+            `,
             backgroundSize: "20px 20px",
           }}
         ></div>
       </div>
 
-      {/* Top & bottom scan lines */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-400 to-transparent animate-pulse"></div>
       <div
         className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-400 to-transparent animate-pulse"
@@ -120,7 +114,6 @@ export default function NotFound() {
       ></div>
 
       <div className="max-w-4xl w-full space-y-8 relative z-10">
-        {/* Terminal Box */}
         <div className="border border-green-400 rounded-lg p-6 bg-black/90 backdrop-blur-sm shadow-2xl">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
@@ -152,27 +145,16 @@ export default function NotFound() {
           </div>
         </div>
 
-        {/* Main 404 */}
         <div className="text-center space-y-8">
           <div className="relative">
             <h1 className="text-8xl md:text-9xl font-bold text-red-400 font-mono tracking-wider relative">
               <span className="inline-block animate-pulse">4</span>
-              <span className="inline-block animate-pulse" style={{ animationDelay: "0.2s" }}>
-                0
-              </span>
-              <span className="inline-block animate-pulse" style={{ animationDelay: "0.4s" }}>
-                4
-              </span>
+              <span className="inline-block animate-pulse" style={{ animationDelay: "0.2s" }}>0</span>
+              <span className="inline-block animate-pulse" style={{ animationDelay: "0.4s" }}>4</span>
               <div className="absolute inset-0 text-green-400 opacity-20 blur-sm">
-                <span className="inline-block animate-pulse" style={{ animationDelay: "0.1s" }}>
-                  4
-                </span>
-                <span className="inline-block animate-pulse" style={{ animationDelay: "0.3s" }}>
-                  0
-                </span>
-                <span className="inline-block animate-pulse" style={{ animationDelay: "0.5s" }}>
-                  4
-                </span>
+                <span className="inline-block animate-pulse" style={{ animationDelay: "0.1s" }}>4</span>
+                <span className="inline-block animate-pulse" style={{ animationDelay: "0.3s" }}>0</span>
+                <span className="inline-block animate-pulse" style={{ animationDelay: "0.5s" }}>4</span>
               </div>
             </h1>
           </div>
@@ -186,7 +168,6 @@ export default function NotFound() {
             <p className="text-green-300">Your attempt has been logged for security analysis.</p>
           </div>
 
-          {/* System Status + Threat Analysis */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
             <div className="border border-green-400/30 rounded p-4 bg-green-400/5 backdrop-blur-sm">
               <div className="text-green-400 mb-2 font-bold flex items-center gap-2">
@@ -214,33 +195,30 @@ export default function NotFound() {
                 <AlertTriangle className="w-4 h-4" />
                 THREAT ANALYSIS
               </div>
-              <div className="space-y-1 text-yellow-300 text-sm">
-                <div className="flex justify-between">
-                  <span>{">"} Risk Level:</span>
-                  <span className="text-yellow-400 animate-pulse">LOW</span>
+              <div className="space-y-2 text-yellow-300 text-sm">
+                <div>
+                  <div className="text-yellow-400 font-semibold">{">"} Risk Level:</div>
+                  <div className="text-yellow-200">LOW</div>
                 </div>
-                <div className="flex justify-between">
-                  <span>{">"} Source IP:</span>
-                  <span className="text-yellow-400 font-bold animate-pulse">{geoData.ip}</span>
+                <div>
+                  <div className="text-yellow-400 font-semibold">{">"} Source IP:</div>
+                  <div className="text-yellow-200 break-all">{geoData.ip}</div>
                 </div>
-                <div className="flex justify-between">
-                  <span>{">"} Location:</span>
-                  <span className="text-yellow-400">{geoData.city}, {geoData.region}, {geoData.country}</span>
+                <div>
+                  <div className="text-yellow-400 font-semibold">{">"} Location:</div>
+                  <div className="text-yellow-200">{geoData.city}, {geoData.region}, {geoData.country}</div>
                 </div>
-                <div className="flex justify-between">
-                  <span>{">"} ISP:</span>
-                  <span className="text-yellow-400">{geoData.org}</span>
+                <div>
+                  <div className="text-yellow-400 font-semibold">{">"} ISP:</div>
+                  <div className="text-yellow-200 break-words">{geoData.org}</div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Trace Log */}
           <div className="mt-4 text-xs text-green-600 text-center italic animate-pulse">
             <span className="text-green-400">[ TRACE LOG ]</span> {geoData.ip} | {geoData.city}, {geoData.region} via {geoData.org}
           </div>
-
-          {/* Navigation, Footer etc. — you can keep your existing JSX here as-is */}
         </div>
       </div>
     </div>
