@@ -1,13 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+// import { Inter } from "next/font/google" // Disabled due to network restrictions
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import GoogleAnalytics from "@/components/google-analytics"
 import { Suspense } from "react"
 
-const inter = Inter({ subsets: ["latin"] })
+// const inter = Inter({ subsets: ["latin"] }) // Disabled due to network restrictions
 
 export const metadata: Metadata = {
   title: "Debasis Biswas - Cybersecurity Enthusiast & BCA Student",
@@ -102,7 +102,7 @@ export default function RootLayout({
           })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}
         </script>
       </head>
-      <body className={inter.className}>
+      <body className="font-sans">{/* Using fallback font due to network restrictions */}
         <Suspense fallback={null}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
             {children}
