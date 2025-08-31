@@ -589,6 +589,38 @@ button:hover {
   color: #3b82f6;
 }
 
+/* Skills Section Mobile Fixes */
+@media (max-width: 768px) {
+  /* Increase spacing between tabs and content on mobile */
+  [data-orientation="horizontal"][role="tablist"] {
+    margin-bottom: 3rem !important; /* Increased from 2rem (mb-8) to 3rem */
+  }
+  
+  /* Add more top margin to tab content on mobile */
+  [role="tabpanel"] {
+    margin-top: 1rem !important;
+  }
+  
+  /* Adjust tab trigger padding for better mobile experience */
+  [role="tab"] {
+    padding: 0.625rem 0.75rem !important; /* Slightly increase padding */
+    font-size: 0.875rem !important; /* Ensure readable text size */
+  }
+}
+
+@media (max-width: 640px) {
+  /* Further increase spacing on smaller screens */
+  [data-orientation="horizontal"][role="tablist"] {
+    margin-bottom: 4rem !important; /* Even more spacing on small screens */
+  }
+  
+  /* Ensure tabs have adequate spacing */
+  [role="tab"] {
+    padding: 0.75rem 0.5rem !important;
+    font-size: 0.8125rem !important;
+  }
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .profile-image-container {
