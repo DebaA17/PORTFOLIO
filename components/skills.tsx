@@ -97,12 +97,12 @@ export default function Skills() {
 
         <div ref={ref} className="max-w-3xl mx-auto">
           <Tabs defaultValue="programming" className="w-full">
-            <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-2 bg-[#111827] p-1 rounded-lg mb-8">
+            <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-2 bg-[#111827] p-1 rounded-lg mb-8 md:mb-8 sm:mb-12">
               {skillCategories.map((category) => (
                 <TabsTrigger
                   key={category.id}
                   value={category.id}
-                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-xs md:text-sm"
                 >
                   {category.label}
                 </TabsTrigger>
@@ -110,7 +110,7 @@ export default function Skills() {
             </TabsList>
 
             {skillCategories.map((category) => (
-              <TabsContent key={category.id} value={category.id} className="space-y-6">
+              <TabsContent key={category.id} value={category.id} className="space-y-6 mt-4 md:mt-2">
                 {category.skills.map((skill, index) => (
                   <div key={index} className="mb-6">
                     <div className="flex justify-between mb-2">
