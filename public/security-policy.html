@@ -10,23 +10,29 @@
       color: #00ff88;
       font-family: 'Courier New', Courier, monospace;
       margin: 0;
-      padding: 2rem;
+      padding: 1rem;
       line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
     }
 
     .terminal {
-      max-width: 800px;
-      margin: 0 auto;
       background-color: #111;
       padding: 2rem;
       border: 1px solid #00ff88;
       box-shadow: 0 0 15px #00ff88;
+      max-width: 800px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     h1, h2 {
       color: #00ff88;
       border-left: 5px solid #00ff88;
       padding-left: 10px;
+      margin-top: 1.5rem;
     }
 
     a {
@@ -41,18 +47,19 @@
     .typing {
       white-space: nowrap;
       overflow: hidden;
-      width: 0;
-      animation: typing 4s steps(40, end) forwards;
+      width: 0ch;
+      animation: typing 3s steps(33, end) forwards;
       border-right: 2px solid #00ff88;
     }
 
     @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
+      from { width: 0ch }
+      to { width: 33ch }
     }
 
     ul {
       list-style-type: square;
+      padding-left: 1.5rem;
     }
 
     code {
@@ -60,6 +67,23 @@
       padding: 2px 4px;
       border-radius: 4px;
       color: #0f0;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      .terminal {
+        padding: 1.5rem;
+      }
+
+      .typing {
+        animation: none;
+        width: 100%;
+        border-right: none;
+        white-space: normal;
+      }
     }
   </style>
 </head>
