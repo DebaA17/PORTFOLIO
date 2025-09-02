@@ -69,6 +69,17 @@ export default function Navbar() {
     }
   }
 
+  // Navigation items, including new Chat button
+  const navItems = [
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "skills", label: "Skills" },
+    { id: "portfolio", label: "Portfolio" },
+    { id: "contact", label: "Contact" },
+    // [CHAT BUTTON]
+    { id: "chat", label: "Chat", external: true, href: "https://chat.debasisbiswas.me" },
+  ]
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -83,23 +94,31 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
-          {[
-            { id: "home", label: "Home" },
-            { id: "about", label: "About" },
-            { id: "skills", label: "Skills" },
-            { id: "portfolio", label: "Portfolio" },
-            { id: "contact", label: "Contact" },
-          ].map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className={`nav-link text-sm font-medium transition-colors hover:text-blue-500 ${
-                activeSection === item.id ? "active" : "text-gray-300"
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
+          {navItems.map((item) =>
+            item.external ? (
+              // [CHAT BUTTON]
+              <a
+                key={item.id}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link text-sm font-medium transition-colors text-blue-500 hover:text-blue-400"
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`nav-link text-sm font-medium transition-colors hover:text-blue-500 ${
+                  activeSection === item.id ? "active" : "text-gray-300"
+                }`}
+              >
+                {item.label}
+              </button>
+            )
+          )}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -112,23 +131,31 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#0a0a14]/95 border-b border-gray-800 animate-fade-in">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            {[
-              { id: "home", label: "Home" },
-              { id: "about", label: "About" },
-              { id: "skills", label: "Skills" },
-              { id: "portfolio", label: "Portfolio" },
-              { id: "contact", label: "Contact" },
-            ].map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`text-left py-2 px-4 rounded-md transition-colors ${
-                  activeSection === item.id ? "bg-blue-500/20 text-blue-500" : "text-gray-300 hover:bg-gray-800"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) =>
+              item.external ? (
+                // [CHAT BUTTON]
+                <a
+                  key={item.id}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-left py-2 px-4 rounded-md transition-colors bg-blue-500/20 text-blue-500"
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-left py-2 px-4 rounded-md transition-colors ${
+                    activeSection === item.id ? "bg-blue-500/20 text-blue-500" : "text-gray-300 hover:bg-gray-800"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              )
+            )}
           </div>
         </div>
       )}
