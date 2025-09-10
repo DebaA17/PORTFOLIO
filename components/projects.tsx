@@ -1,6 +1,7 @@
   // Use the same background image for all projects
-  const projectBg = "/add-project-bg.jpg";
-"use client"
+"use client";
+
+const projectBg = "/add-project-bg.jpg";
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
