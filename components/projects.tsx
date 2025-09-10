@@ -1,3 +1,6 @@
+  const projectBackgrounds: Record<string, string> = {
+    "Weather-App": "/weather-app-bg.jpg",
+  };
 "use client"
 
 import { useState, useEffect } from "react"
@@ -50,7 +53,14 @@ export default function Projects() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-[#181f2a] rounded-2xl overflow-hidden shadow-lg flex flex-col h-full"
               >
-                <div className="relative h-40 sm:h-48 flex items-center justify-center" style={{ backgroundImage: 'url(/placeholder.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                <div
+                  className="relative h-40 sm:h-48 flex items-center justify-center"
+                  style={{
+                    backgroundImage: `url(${projectBackgrounds[repo.name] || '/placeholder.jpg'})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                >
                   <div className="absolute inset-0 bg-black/40" />
                   <img
                     src={repo.owner?.avatar_url || "/placeholder.svg"}
