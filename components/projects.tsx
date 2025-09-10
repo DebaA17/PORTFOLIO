@@ -1,6 +1,5 @@
-  const projectBackgrounds: Record<string, string> = {
-    "Weather-App": "/weather-app-bg.jpg",
-  };
+  // Use the same background image for all projects
+  const projectBg = "/add-project-bg.jpg";
 "use client"
 
 import { useState, useEffect } from "react"
@@ -56,7 +55,7 @@ export default function Projects() {
                 <div
                   className="relative h-40 sm:h-48 flex items-center justify-center"
                   style={{
-                    backgroundImage: `url(${projectBackgrounds[repo.name] || '/placeholder.jpg'})`,
+                    backgroundImage: `url(${projectBg})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                   }}
