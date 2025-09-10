@@ -16,7 +16,9 @@ export default function Projects() {
         return res.json()
       })
       .then((data) => {
-        setRepos(data)
+  // Exclude profile README, MY-DP, and any other repos you want
+  const excluded = ["DebaA17", "MY-DP", "chat-portfolio", "PYTHON_LAB", "golan-learning", "DemoLoginPage"];
+  setRepos(data.filter((repo: any) => !excluded.includes(repo.name)))
         setLoading(false)
       })
       .catch((err) => {
