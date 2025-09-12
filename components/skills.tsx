@@ -86,23 +86,23 @@ export default function Skills() {
   ]
 
   return (
-    <section id="skills" className="py-20 bg-[#0c0c1a]">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+    <section id="skills" className="py-14 sm:py-20 bg-[#0c0c1a]">
+      <div className="container mx-auto px-2 sm:px-4">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
             My <span className="text-blue-500">Skills</span>
           </h2>
-          <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
+          <div className="w-16 sm:w-24 h-1 bg-blue-500 mx-auto"></div>
         </div>
 
-        <div ref={ref} className="max-w-3xl mx-auto">
+        <div ref={ref} className="max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto">
           <Tabs defaultValue="programming" className="w-full">
-            <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-2 bg-[#111827] p-1 rounded-lg mb-8 md:mb-8 sm:mb-12">
+            <TabsList className="flex overflow-x-auto no-scrollbar gap-2 bg-[#111827] p-1 rounded-lg mb-6 sm:mb-8">
               {skillCategories.map((category) => (
                 <TabsTrigger
                   key={category.id}
                   value={category.id}
-                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-xs md:text-sm"
+                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-xs sm:text-sm min-w-[120px] px-2 py-1"
                 >
                   {category.label}
                 </TabsTrigger>
@@ -110,10 +110,10 @@ export default function Skills() {
             </TabsList>
 
             {skillCategories.map((category) => (
-              <TabsContent key={category.id} value={category.id} className="space-y-6 mt-4 md:mt-2">
+              <TabsContent key={category.id} value={category.id} className="space-y-5 sm:space-y-6 mt-3 sm:mt-4">
                 {category.skills.map((skill, index) => (
-                  <div key={index} className="mb-6">
-                    <div className="flex justify-between mb-2">
+                  <div key={index} className="mb-5 sm:mb-6">
+                    <div className="flex flex-col xs:flex-row xs:justify-between gap-1 mb-1 sm:mb-2 text-sm sm:text-base">
                       <span className="font-medium">{skill.name}</span>
                       <span className="text-blue-500">{skill.level}%</span>
                     </div>
