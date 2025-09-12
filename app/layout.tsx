@@ -1,13 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
-// import { Inter } from "next/font/google" // Disabled due to network restrictions
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import GoogleAnalytics from "@/components/google-analytics"
 import { Suspense } from "react"
 
-// const inter = Inter({ subsets: ["latin"] }) // Disabled due to network restrictions
 
 export const metadata: Metadata = {
   title: "Debasis Biswas - Cybersecurity Enthusiast & BCA Student",
@@ -51,9 +49,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
+ 
   
 }
 
