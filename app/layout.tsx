@@ -65,6 +65,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <title>Debasis Biswas - Cybersecurity Enthusiast & BCA Student</title>
+        <meta name="description" content="Portfolio of Debasis Biswas - BCA Student, Cybersecurity Enthusiast, Network Engineering, and Linux Troubleshooter" />
+        <meta name="keywords" content="Debasis Biswas, Cybersecurity, BCA Student, Network Engineering, Linux, Portfolio" />
+        <meta name="author" content="Debasis Biswas" />
+        <meta property="og:title" content="Debasis Biswas - Cybersecurity Enthusiast" />
+        <meta property="og:description" content="Portfolio of Debasis Biswas - BCA Student, Cybersecurity Enthusiast, Network Engineering, and Linux Troubleshooter" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://debasisbiswas.me" />
+        <meta property="og:site_name" content="Debasis Biswas Portfolio" />
+        <meta property="og:image" content="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DEBASIS.jpg-cGsNmIEbGP4AphkJpHl8bmIw3mbWY6.jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Debasis Biswas - Cybersecurity Enthusiast" />
+        <meta name="twitter:description" content="Portfolio of Debasis Biswas - BCA Student, Cybersecurity Enthusiast, Network Engineering, and Linux Troubleshooter" />
+        <meta name="twitter:image" content="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DEBASIS.jpg-cGsNmIEbGP4AphkJpHl8bmIw3mbWY6.jpeg" />
+        <link rel="canonical" href="https://debasisbiswas.me" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
