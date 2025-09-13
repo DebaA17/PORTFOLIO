@@ -1,8 +1,14 @@
+declare global {
+  interface Window {
+    turnstile?: any;
+    onTurnstileLoad?: () => void;
+  }
+}
 "use client"
 
 import type React from "react"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 import { motion } from "framer-motion"
 import { Mail, Github, Linkedin, Send, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -20,6 +26,18 @@ export default function Contact() {
   })
   const formRef = useRef<HTMLFormElement>(null);
   const [token, setToken] = useState("");
+  const turnstileRef = useRef<HTMLDivElement | null>(null);
+
+  const renderTurnstile = useCallback(() => {
+    if (window.turnstile && turnstileRef.current) {
+      window.turnstile.render(turnstileRef.current, {
+        sitekey: "0x4AAAAAAB1BIYgpO762-xYY",
+        callback: (token: string) => setToken(token),
+        "expired-callback": () => setToken(""),
+        "error-callback": () => setToken("")
+      });
+    }
+  }, []);
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const { toast } = useToast()
@@ -103,21 +121,24 @@ export default function Contact() {
   ];
 
   useEffect(() => {
-    if (!document.getElementById("cf-turnstile-script")) {
+    if (!window.turnstile) {
       const script = document.createElement("script");
-      script.id = "cf-turnstile-script";
-      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad";
       script.async = true;
+      window.onTurnstileLoad = () => {
+        renderTurnstile();
+      };
       document.body.appendChild(script);
+    } else {
+      renderTurnstile();
     }
-    function handleToken(e: Event) {
-      setToken((e as CustomEvent).detail.token);
-    }
-    window.addEventListener("turnstile-token", handleToken);
+    // Cleanup
     return () => {
-      window.removeEventListener("turnstile-token", handleToken);
+      if (turnstileRef.current && window.turnstile) {
+        window.turnstile.remove(turnstileRef.current);
+      }
     };
-  }, []);
+  }, [renderTurnstile]);
 
   return (
     <section id="contact" className="py-20 bg-[#0c0c1a]">
@@ -230,7 +251,7 @@ export default function Contact() {
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="cf-turnstile" data-sitekey="0x4AAAAAAB1BIYgpO762-xYY"></div>
+                    <div ref={turnstileRef}></div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium mb-2">
