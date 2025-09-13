@@ -38,6 +38,14 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!token) {
+      toast({
+        title: "Verification required",
+        description: "Please complete the Turnstile verification.",
+        variant: "destructive",
+      });
+      return;
+    }
     setIsSubmitting(true);
     setSubmitSuccess(false);
     try {
