@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { Mail, Github, Linkedin, Send, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -18,6 +18,8 @@ export default function Contact() {
     subject: "",
     message: "",
   })
+  const formRef = useRef<HTMLFormElement>(null);
+  const [token, setToken] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const { toast } = useToast()
@@ -35,39 +37,38 @@ export default function Contact() {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitSuccess(false)
-
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitSuccess(false);
     try {
+      const payload = { ...formData, "cf-turnstile-response": token };
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
-      })
-
+        body: JSON.stringify(payload),
+      });
       if (response.ok) {
         toast({
           title: "Message sent successfully!",
           description: "Thank you for reaching out. I'll get back to you soon.",
-        })
-        setFormData({ name: "", email: "", subject: "", message: "" })
-        setSubmitSuccess(true)
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setSubmitSuccess(true);
       } else {
-        throw new Error("Failed to send message")
+        throw new Error("Failed to send message");
       }
     } catch (error) {
       toast({
         title: "Error sending message",
         description: "Please try again later or contact me directly via email.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const contactInfo = [
     {
@@ -91,7 +92,24 @@ export default function Contact() {
       href: "https://linkedin.com/in/debasis-biswas",
       color: "hover:text-blue-400",
     },
-  ]
+  ];
+
+  useEffect(() => {
+    if (!document.getElementById("cf-turnstile-script")) {
+      const script = document.createElement("script");
+      script.id = "cf-turnstile-script";
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function handleToken(e: Event) {
+      setToken((e as CustomEvent).detail.token);
+    }
+    window.addEventListener("turnstile-token", handleToken);
+    return () => {
+      window.removeEventListener("turnstile-token", handleToken);
+    };
+  }, []);
 
   return (
     <section id="contact" className="py-20 bg-[#0c0c1a]">
@@ -204,6 +222,7 @@ export default function Contact() {
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="cf-turnstile" data-sitekey="0x4AAAAAAB1BIYgpO762-xYY"></div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium mb-2">
