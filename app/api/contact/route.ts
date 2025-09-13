@@ -122,69 +122,66 @@ ${data.message}
 
 export async function POST(request: NextRequest) {
   try {
-    // Get client IP for rate limiting
-    const clientIP = getClientIP(request)
-
-    // Check rate limiting
+    const clientIP = getClientIP(request);
     if (isRateLimited(clientIP)) {
-      return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 })
+      return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 });
+    }
+    const body = await request.json();
+
+    // Cloudflare Turnstile verification
+    const turnstileToken = body["cf-turnstile-response"];
+    if (!turnstileToken) {
+      return NextResponse.json({ error: "Turnstile verification failed." }, { status: 400 });
+    }
+    const secretKey = "0x4AAAAAAB1BIdqqu2u-HoedEojfMoS1j6g";
+    const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `secret=${secretKey}&response=${turnstileToken}`,
+    });
+    const verifyData = await verifyRes.json();
+    if (!verifyData.success) {
+      return NextResponse.json({ error: "Turnstile verification failed." }, { status: 400 });
     }
 
-    // Parse request body
-    const body = await request.json()
-
-    // Validate required fields
     if (!body.name || !body.email || !body.message) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(body.email)) {
-      return NextResponse.json({ error: "Invalid email format" }, { status: 400 })
+      return NextResponse.json({ error: "Invalid email format" }, { status: 400 });
     }
-
-    // Sanitize inputs
     const sanitizedData = {
       name: sanitizeInput(body.name),
       email: sanitizeInput(body.email),
       subject: body.subject ? sanitizeInput(body.subject) : "",
       message: sanitizeInput(body.message),
-    }
-
-    // Check for spam
+    };
     if (detectSpam(sanitizedData)) {
-      return NextResponse.json({ error: "Message flagged as spam" }, { status: 400 })
+      return NextResponse.json({ error: "Message flagged as spam" }, { status: 400 });
     }
-
-    // Log the contact form submission
     console.log("Contact form submission:", {
       timestamp: new Date().toISOString(),
       name: sanitizedData.name,
       email: sanitizedData.email,
       subject: sanitizedData.subject,
       ip: clientIP,
-    })
-
-    // Try to send to Telegram (don't fail if this doesn't work)
+    });
     try {
-      await sendToTelegram(sanitizedData)
+      await sendToTelegram(sanitizedData);
     } catch (telegramError) {
-      console.error("Telegram notification failed:", telegramError)
-      // Continue with the request even if Telegram fails
+      console.error("Telegram notification failed:", telegramError);
     }
-
-    // Return success response
     return NextResponse.json(
       {
         success: true,
         message: "Message sent successfully!",
       },
       { status: 200 },
-    )
+    );
   } catch (error) {
-    console.error("Contact form error:", error)
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+    console.error("Contact form error:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
 
