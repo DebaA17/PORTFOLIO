@@ -29,6 +29,9 @@ export default function Footer() {
             <a href="mailto:contact@debasisbiswas.me" className="text-gray-400 hover:text-blue-500 transition-colors">
               Email
             </a>
+            <a href="/privacy-policy" className="text-gray-400 hover:text-blue-500 transition-colors">
+              Privacy Policy
+            </a>
           </div>
         </div>
       </div>
