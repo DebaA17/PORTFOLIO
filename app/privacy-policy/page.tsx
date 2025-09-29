@@ -24,13 +24,15 @@ export default function PrivacyPolicy() {
       </p>
       <h2 className="text-xl font-semibold mt-8 mb-2">Data Sharing</h2>
       <p className="mb-4">
-        We do <strong>not</strong> share your data with any third parties. All collected data is used only by us for security and analytics.
+        We do <strong>not</strong> share your data with any third parties. All collected data is used only by us for security and analytics.<br />
+        <br />
+        <strong>Personal information submitted through the contact form (such as your name, email address, or message) is also kept strictly confidential and is <u>never</u> shared with third parties.</strong>
       </p>
       <h2 className="text-xl font-semibold mt-8 mb-2">Your Choices</h2>
       <p className="mb-4">
         If you have concerns about your privacy or wish to request more information, please contact us using the contact form on this website.
       </p>
-      <p className="text-sm text-gray-500 mt-8">Last updated: September 23, 2025</p>
+      <p className="text-sm text-gray-500 mt-8">Last updated: September 29, 2025</p>
     </main>
   );
 }
