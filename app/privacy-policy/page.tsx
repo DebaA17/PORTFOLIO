@@ -22,17 +22,21 @@ export default function PrivacyPolicy() {
       <p className="mb-4">
         The data is collected solely for security purposes and to improve the user experience. We do not use this data for advertising or marketing.
       </p>
-      <h2 className="text-xl font-semibold mt-8 mb-2">Data Sharing</h2>
+      <h2 className="text-xl font-semibold mt-8 mb-2">Data Sharing & AI Usage</h2>
       <p className="mb-4">
         We do <strong>not</strong> share your data with any third parties. All collected data is used only by us for security and analytics.<br />
         <br />
-        <strong>Personal information submitted through the contact form (such as your name, email address, or message) is also kept strictly confidential and is <u>never</u> shared with third parties.</strong>
+        <strong>Personal information submitted through the contact form (such as your name, email address, or message) is also kept strictly confidential and is <u>never</u> shared with third parties.</strong><br />
+        <br />
+        <strong>Uploaded files are encrypted and not shared with any third parties.</strong><br />
+        <br />
+        <strong>User input provided in chat or messaging features may be used to improve automated systems and AI models, but will not be used for advertising or sold to third parties.</strong>
       </p>
       <h2 className="text-xl font-semibold mt-8 mb-2">Your Choices</h2>
       <p className="mb-4">
         If you have concerns about your privacy or wish to request more information, please contact us using the contact form on this website.
       </p>
-      <p className="text-sm text-gray-500 mt-8">Last updated: September 29, 2025</p>
+      <p className="text-sm text-gray-500 mt-8">Last updated: October 13, 2025</p>
     </main>
   );
 }
