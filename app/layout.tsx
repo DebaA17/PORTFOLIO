@@ -116,11 +116,7 @@ export default function RootLayout({
           })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}
         </script>
         
-s1.async=true;
-s1.src='https://embed.tawk.to/68eced4337441419507041aa/1j7entkub';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
+ {/* Tawk.to code added */}
 <script type="text/javascript">
   {`
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
