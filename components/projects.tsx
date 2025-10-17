@@ -19,7 +19,7 @@ export default function Projects() {
         return res.json()
       })
       .then((data) => {
-  const excluded = ["DebaA17", "MY-DP", "chat-portfolio", "PYTHON_LAB", "golang-learning", "DemoLoginPage", "llm-chat-app-template", "Data_structure_LAB", "pacguard"];
+  const excluded = ["DebaA17", "MY-DP", "chat-portfolio", "PYTHON_LAB", "golang-learning", "DemoLoginPage", "llm-chat-app-template", "DSA_LAB", "pacguard"];
   setRepos(data.filter((repo: any) => !excluded.includes(repo.name)))
         setLoading(false)
       })
