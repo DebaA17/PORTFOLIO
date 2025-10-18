@@ -11,7 +11,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'blob.v0.dev',
+        hostname: 'PORTFOLIO',
         port: '',
         pathname: '/**',
       },
@@ -132,7 +132,7 @@ const nextConfig = {
           // Remove X-Powered-By for security
           {
             key: 'X-Powered-By',
-            value: 'Debasis-Portfolio-v3.0-Secure'
+            value: 'Debasis-Portfolio'
           },
           
           // Custom Security Headers
