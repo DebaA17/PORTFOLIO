@@ -130,9 +130,16 @@ export default function RootLayout({
     })();
   `}
 </script>
+
+  {/* <!-- 100% privacy-first analytics --> */}
+  <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   
       </head>
       <body className="font-sans">{/* Using fallback font due to network restrictions */}
+        {/* Simple Analytics noscript moved to body for valid HTML */}
+        <noscript>
+          <img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerPolicy="no-referrer-when-downgrade" />
+        </noscript>
         <Suspense fallback={null}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
             {children}
