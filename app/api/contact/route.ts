@@ -133,7 +133,10 @@ export async function POST(request: NextRequest) {
     if (!turnstileToken) {
       return NextResponse.json({ error: "Turnstile verification failed." }, { status: 400 });
     }
-    const secretKey = "0x4AAAAAAB1BIdqqu2u-HoedEojfMoS1j6g";
+    const secretKey = process.env.CF_TURNSTILE_SECRET;
+    if (!secretKey) {
+      return NextResponse.json({ error: "Turnstile secret key not configured." }, { status: 500 });
+    }
     const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
