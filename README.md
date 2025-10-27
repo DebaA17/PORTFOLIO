@@ -2,6 +2,8 @@
 
 ![Preview](/public/preview.png)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0a2b93e0-f2ce-4065-b7a4-0cd4ff209d4b/deploy-status)](https://app.netlify.com/projects/debasisbiswas-port/deploys)
+
 Welcome to the PORTFOLIO project! This is a modern, responsive portfolio built with Next.js and Tailwind CSS, designed to showcase your skills, projects, and contact information in a clean and professional manner.
 
 ## Features
