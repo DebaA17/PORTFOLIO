@@ -1,3 +1,4 @@
+import { title } from "process";
 import React from "react";
 
 const certifications = [
@@ -15,6 +16,13 @@ const certifications = [
     issuer: "Cisco Networking Academy",
     date: "2025-04-21",
   },
+  {
+    title: "SQL Injection",
+    image: "/certifications/SQL injection.png",
+    verifyUrl: "https://learn.eccouncil.org/certificate/3c62091f-76ad-47d0-8529-ac539540267a?logged=false",
+    issuer: "EC-Council",
+    date: "2025-6-28"
+  }
 ];
 
 export default function CertificationsPage() {
@@ -38,7 +46,7 @@ export default function CertificationsPage() {
             <h2 className="text-2xl font-semibold mb-2 text-center">{cert.title}</h2>
             <p className="text-gray-400 mb-2">{cert.issuer}</p>
             <p className="text-gray-500 text-sm mb-4">Issued: {new Date(cert.date).toLocaleDateString()}</p>
-            {idx === 0 && (
+            {cert.verifyUrl && (
               <a
                 href={cert.verifyUrl}
                 target="_blank"
