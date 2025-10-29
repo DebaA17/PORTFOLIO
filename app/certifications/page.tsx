@@ -22,6 +22,13 @@ const certifications = [
     verifyUrl: "https://learn.eccouncil.org/certificate/3c62091f-76ad-47d0-8529-ac539540267a?logged=false",
     issuer: "EC-Council",
     date: "2025-6-28"
+  },
+  {
+    title: "Kali Linux for Advanced Pen Testing and Ethicla Hacking",
+    image: "/certifications/Kali-pentesting.png",
+    verifyUrl: "https://www.linkedin.com/learning/certificates/b3ee43e11baafc34558bc8452a1980b96270cbf2c84422ec9b0e80cea8eea283",
+    issuer: "Linkedin",
+    date: "2025-6-3"
   }
 ];
 
