@@ -52,9 +52,9 @@ export default function Navbar() {
     }
   }
 
-  // Chat button first, then other sections
   const navItems = [
-    { id: "chat", label: "Chat", external: true, href: "https://chat.debasisbiswas.me" },
+    { id: "chat", label: "Chat", external: true, href: "https://chat.debasisbiswas.me", icon: <MessageCircle size={18} className="mr-1" /> },
+    { id: "certifications", label: "Certifications", external: true, href: "/certifications", icon: null },
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
@@ -81,12 +81,12 @@ export default function Navbar() {
               <a
                 key={item.id}
                 href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={item.href.startsWith('http') ? "_blank" : undefined}
+                rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
                 style={{ fontWeight: 700 }}
               >
-                <MessageCircle size={18} className="mr-1" />
+                {item.icon}
                 {item.label}
               </a>
             ) : (
@@ -118,12 +118,12 @@ export default function Navbar() {
                 <a
                   key={item.id}
                   href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={item.href.startsWith('http') ? "_blank" : undefined}
+                  rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
                   className="flex items-center gap-2 py-2 px-4 rounded-md font-semibold bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   style={{ fontWeight: 700 }}
                 >
-                  <MessageCircle size={18} className="mr-1" />
+                  {item.icon}
                   {item.label}
                 </a>
               ) : (
