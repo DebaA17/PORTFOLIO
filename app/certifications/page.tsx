@@ -24,7 +24,7 @@ const certifications = [
     date: "2025-6-28"
   },
   {
-    title: "Kali Linux for Advanced Pen Testing and Ethicla Hacking",
+    title: "Kali Linux for Advanced Pen Testing and Ethical Hacking",
     image: "/certifications/Kali-pentesting.png",
     verifyUrl: "https://www.linkedin.com/learning/certificates/b3ee43e11baafc34558bc8452a1980b96270cbf2c84422ec9b0e80cea8eea283",
     issuer: "Linkedin",
