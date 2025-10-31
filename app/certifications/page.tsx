@@ -29,6 +29,13 @@ const certifications = [
     verifyUrl: "https://www.linkedin.com/learning/certificates/b3ee43e11baafc34558bc8452a1980b96270cbf2c84422ec9b0e80cea8eea283",
     issuer: "Linkedin",
     date: "2025-6-3"
+  },
+  {
+    title: "XSS Exploits and Defenses",
+    image: "/certifications/Linux Foundation cert(xss).jpg",
+    verifyUrl: "https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/e0c0fd33-11ed-45ef-9866-7190de45b045-debasis-biswas-5fd87972-bd2e-4ae3-9311-5c7750887ece-certificate.pdf",
+    issuer: "The Linux Foundation",
+    date: "2025-9-23"
   }
 ];
 
