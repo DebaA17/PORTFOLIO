@@ -156,7 +156,7 @@ export default function Hero() {
         {/* Optimized background image using next/image */}
         <div className="absolute inset-0 z-[-2]">
           <Image
-            src="/bg.webp"
+            src="/add-project-bg.jpg"
             alt="Background"
             fill
             priority
@@ -181,7 +181,7 @@ export default function Hero() {
           <div className="profile-image-container animate-float mb-8 group">
             <div className="profile-image-glow group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"></div>
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DEBASIS.jpg-cGsNmIEbGP4AphkJpHl8bmIw3mbWY6.jpeg"
+              src="/DEBASIS.jpg"
               alt="Debasis Biswas - BCA Student and Cybersecurity Enthusiast"
               width={200}
               height={200}
