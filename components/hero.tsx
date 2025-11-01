@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useEffect, useRef, useState } from "react"
@@ -5,9 +6,74 @@ import Image from "next/image"
 import { ChevronDown, Terminal } from "lucide-react"
 import Script from "next/script"
 
+// Add TypeScript declaration for window.tsParticles
+declare global {
+  interface Window {
+    tsParticles: any;
+  }
+}
+
 export default function Hero() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [particlesLoaded, setParticlesLoaded] = useState(false)
+
+  // Restore particle background initialization
+  useEffect(() => {
+    if (!particlesLoaded) return;
+    const initParticles = () => {
+      try {
+        if (typeof window !== "undefined" && window.tsParticles) {
+          window.tsParticles.load("tsparticles", {
+            fullScreen: { enable: false, zIndex: 0 },
+            particles: {
+              number: { value: 30, density: { enable: true, value_area: 800 } },
+              color: { value: "#3b82f6" },
+              shape: { type: "circle" },
+              opacity: { value: 0.5, random: true },
+              size: { value: 3, random: true },
+              move: {
+                enable: true,
+                speed: 1,
+                direction: "none",
+                random: true,
+                straight: false,
+                out_mode: "out"
+              },
+              line_linked: {
+                enable: true,
+                distance: 150,
+                color: "#3b82f6",
+                opacity: 0.2,
+                width: 1
+              }
+            },
+            interactivity: {
+              detect_on: "canvas",
+              events: {
+                onhover: { enable: true, mode: "grab" },
+                resize: true
+              },
+              modes: {
+                grab: {
+                  distance: 140,
+                  line_linked: { opacity: 0.5 }
+                }
+              }
+            },
+            retina_detect: true
+          });
+        }
+      } catch (error) {
+        console.error("Failed to initialize particles:", error);
+      }
+    };
+    initParticles();
+    return () => {
+      if (typeof window !== "undefined" && window.tsParticles) {
+        window.tsParticles.destroy("tsparticles");
+      }
+    };
+  }, [particlesLoaded]);
 
   // Handle scroll down button click
   const scrollToAbout = () => {
@@ -19,96 +85,6 @@ export default function Hero() {
       })
     }
   }
-
-  // Initialize particle background using a simpler approach with Script component
-  useEffect(() => {
-    // Only run this effect if particles script has loaded
-    if (!particlesLoaded) return
-
-    // Function to initialize particles
-    const initParticles = () => {
-      try {
-        if (typeof window !== "undefined" && window.tsParticles) {
-          window.tsParticles.load("tsparticles", {
-            fullScreen: {
-              enable: false,
-              zIndex: 0,
-            },
-            particles: {
-              number: {
-                value: 30,
-                density: {
-                  enable: true,
-                  value_area: 800,
-                },
-              },
-              color: {
-                value: "#3b82f6",
-              },
-              shape: {
-                type: "circle",
-              },
-              opacity: {
-                value: 0.5,
-                random: true,
-              },
-              size: {
-                value: 3,
-                random: true,
-              },
-              move: {
-                enable: true,
-                speed: 1,
-                direction: "none",
-                random: true,
-                straight: false,
-                out_mode: "out",
-              },
-              line_linked: {
-                enable: true,
-                distance: 150,
-                color: "#3b82f6",
-                opacity: 0.2,
-                width: 1,
-              },
-            },
-            interactivity: {
-              detect_on: "canvas",
-              events: {
-                onhover: {
-                  enable: true,
-                  mode: "grab",
-                },
-                resize: true,
-              },
-              modes: {
-                grab: {
-                  distance: 140,
-                  line_linked: {
-                    opacity: 0.5,
-                  },
-                },
-              },
-            },
-            retina_detect: true,
-          })
-        }
-      } catch (error) {
-        console.error("Failed to initialize particles:", error)
-        // Fallback to no particles
-      }
-    }
-
-    // Initialize particles
-    initParticles()
-
-    // Cleanup function
-    return () => {
-      if (typeof window !== "undefined" && window.tsParticles) {
-        window.tsParticles.destroy("tsparticles")
-      }
-    }
-  }, [particlesLoaded])
 
   // Initialize typewriter effect with improved speed
   useEffect(() => {
@@ -177,6 +153,18 @@ export default function Hero() {
       />
 
       <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+        {/* Optimized background image using next/image */}
+        <div className="absolute inset-0 z-[-2]">
+          <Image
+            src="/bg.webp"
+            alt="Background"
+            fill
+            priority
+            quality={80}
+            className="object-cover w-full h-full"
+            sizes="100vw"
+          />
+        </div>
         {/* Particle background */}
         <div
           id="tsparticles"
