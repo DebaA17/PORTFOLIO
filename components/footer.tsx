@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
           {/* Left section: Buy me a coffee + copyright */}
-          <div className="flex flex-col sm:flex-row items-center mb-4 md:mb-0 gap-2 sm:gap-4">
+          <div className="flex flex-col md:flex-row items-center mb-4 md:mb-0 gap-2 md:gap-4">
             <a
               href="https://www.buymeacoffee.com/debasisbiswas"
               target="_blank"
@@ -20,7 +20,7 @@ export default function Footer() {
             </p>
           </div>
           {/* Right section: Social/Privacy links */}
-          <div className="flex flex-col xs:flex-row items-center gap-2 xs:gap-4">
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
             <a
               href="https://github.com/DebaA17"
               target="_blank"
