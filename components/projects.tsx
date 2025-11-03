@@ -65,12 +65,16 @@ export default function Projects() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-black/40" />
-                  <img
-                    src={repo.owner?.avatar_url || "/placeholder.svg"}
-                    alt={repo.name}
-                    className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-full border-4 border-blue-500 shadow-lg z-10"
-                    style={{ position: 'relative' }}
-                  />
+                  <div className="relative z-10">
+                    <Image
+                      src={repo.owner?.avatar_url || "/placeholder.svg"}
+                      alt={repo.name}
+                      width={96}
+                      height={96}
+                      className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-full border-4 border-blue-500 shadow-lg"
+                      priority={index === 0}
+                    />
+                  </div>
                 </div>
                 <div className="p-4 sm:p-6 flex flex-col flex-1">
                   <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-white truncate">{repo.name}</h3>

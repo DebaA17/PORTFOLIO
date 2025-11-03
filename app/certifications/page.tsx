@@ -1,5 +1,6 @@
 import { title } from "process";
 import React from "react";
+import Image from "next/image"
 
 const certifications = [
   {
@@ -50,12 +51,17 @@ export default function CertificationsPage() {
             className="bg-[#18181b] rounded-lg shadow p-6 flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl group"
           >
             <div className="overflow-hidden rounded-lg w-full flex justify-center mb-4">
-              <img
-                src={cert.image}
-                alt={cert.title}
-                className="w-full max-w-[420px] h-auto object-contain border border-gray-700 rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg"
-                style={{ aspectRatio: '4/3' }}
-              />
+              <div className="w-full max-w-[420px] relative">
+                <Image
+                  src={cert.image}
+                  alt={cert.title}
+                  width={840}
+                  height={630}
+                  sizes="(max-width: 640px) 100vw, 420px"
+                  className="w-full h-auto object-contain border border-gray-700 rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg"
+                  priority={idx === 0}
+                />
+              </div>
             </div>
             <h2 className="text-2xl font-semibold mb-2 text-center">{cert.title}</h2>
             <p className="text-gray-400 mb-2">{cert.issuer}</p>
