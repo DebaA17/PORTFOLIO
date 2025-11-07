@@ -53,7 +53,7 @@ export default function Navbar() {
   }
 
   const navItems = [
-    { id: "chat", label: "Chat", external: true, href: "https://chat.debasisbiswas.me", icon: <MessageCircle size={18} className="mr-1" /> },
+    { id: "chat", label: "Chat", external: true, href: "https://chatgpt.com/g/g-690e05134b88819198752ab1b945e2b8-debasis-chatbot", icon: <MessageCircle size={18} className="mr-1" /> },
     { id: "certifications", label: "Certifications", external: true, href: "/certifications", icon: null },
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
