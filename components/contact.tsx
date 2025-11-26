@@ -1,9 +1,3 @@
-declare global {
-  interface Window {
-    turnstile?: any;
-    onTurnstileLoad?: () => void;
-  }
-}
 "use client"
 
 import type React from "react"

@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // eslint config removed (unsupported in Next.js 16+)
   typescript: {
     ignoreBuildErrors: true,
   },
