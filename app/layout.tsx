@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "Debasis Biswas Portfolio",
     images: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DEBASIS.jpg-cGsNmIEbGP4AphkJpHl8bmIw3mbWY6.jpeg",
+        url: "/DEBASIS.jpg",
         width: 1200,
         height: 630,
         alt: "Debasis Biswas - Cybersecurity Enthusiast",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Debasis Biswas - Cybersecurity Enthusiast",
     description:
       "Portfolio of Debasis Biswas - BCA Student, Cybersecurity Enthusiast, Network Engineering, and Linux Troubleshooter",
-    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DEBASIS.jpg-cGsNmIEbGP4AphkJpHl8bmIw3mbWY6.jpeg"],
+    images: ["/DEBASIS.jpg"],
   },
   robots: {
     index: true,
@@ -70,14 +70,14 @@ export default function RootLayout({
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://debasisbiswas.me" />
         <meta property="og:site_name" content="Debasis Biswas Portfolio" />
-        <meta property="og:image" content="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DEBASIS.jpg-cGsNmIEbGP4AphkJpHl8bmIw3mbWY6.jpeg" />
+        <meta property="og:image" content="/DEBASIS.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:locale" content="en_US" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Debasis Biswas - Cybersecurity Enthusiast" />
         <meta name="twitter:description" content="Portfolio of Debasis Biswas - BCA Student, Cybersecurity Enthusiast, Network Engineering, and Linux Troubleshooter" />
-        <meta name="twitter:image" content="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DEBASIS.jpg-cGsNmIEbGP4AphkJpHl8bmIw3mbWY6.jpeg" />
+        <meta name="twitter:image" content="/DEBASIS.jpg" />
         <link rel="canonical" href="https://debasisbiswas.me" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="icon" href="/favicon.png" />
