@@ -97,12 +97,6 @@ export default function Contact() {
       value: "contact@debasisbiswas.me",
       href: "mailto:contact@debasisbiswas.me",
     },
-    {
-      icon: Mail,
-      label: "Security Email",
-      value: "forensic@debasisbiswas.me",
-      href: "mailto:forensic@debasisbiswas.me",
-    },
   ]
 
   const socialLinks = [
