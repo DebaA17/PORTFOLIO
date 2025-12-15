@@ -97,6 +97,12 @@ export default function Contact() {
       value: "contact@debasisbiswas.me",
       href: "mailto:contact@debasisbiswas.me",
     },
+    {
+      icon: Mail,
+      label: "Security Email",
+      value: "forensic@debasisbiswas.me",
+      href: "mailto:forensic@debasisbiswas.me",
+    },
   ]
 
   const socialLinks = [
@@ -274,7 +280,7 @@ export default function Contact() {
                           value={formData.email}
                           onChange={handleInputChange}
                           className="bg-[#0a0a14] border-gray-700 focus:border-blue-500"
-                          placeholder="your.email@example.com"
+                          placeholder="contact@debasisbiswas.me"
                         />
                       </div>
                     </div>
