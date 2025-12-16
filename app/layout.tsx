@@ -7,7 +7,16 @@ import GoogleAnalytics from "@/components/google-analytics"
 import { Suspense } from "react"
 
 
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.NETLIFY === "true"
+    ? (process.env.URL || process.env.DEPLOY_PRIME_URL || process.env.DEPLOY_URL)
+    : undefined) ||
+  "https://debasisbiswas.me"
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Debasis Biswas - Cybersecurity Enthusiast & BCA Student",
   description:
     "Portfolio of Debasis Biswas - BCA Student, Cybersecurity Enthusiast, Network Engineering, and Linux Troubleshooter",
