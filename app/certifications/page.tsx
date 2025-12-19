@@ -13,7 +13,7 @@ const certifications = [
   {
     title: "Network Addressing and Basic Troubleshooting",
     image: "/certifications/Network_cisco.jpg",
-    verifyUrl: "",
+    verifyUrl: "https://www.credly.com/badges/b7e1b556-27f8-4eee-abfe-15d93bc434c4",
     issuer: "Cisco Networking Academy",
     date: "2025-04-21",
   },
