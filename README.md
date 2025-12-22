@@ -29,6 +29,37 @@ Welcome to the PORTFOLIO project! This is a modern, responsive portfolio built w
    ```
 3. Open [http://localhost:3000](http://localhost:3000) to view your portfolio.
 
+## Docker/Podman Local Usage
+
+You can run this portfolio locally in a container using Docker or Podman.
+
+### Build the image
+```sh
+# With Docker:
+docker build -t portfolio .
+# With Podman:
+podman build -t portfolio .
+```
+
+### Run the container
+```sh
+# With Docker:
+docker run -p 3000:3000 portfolio
+# With Podman:
+podman run -p 3000:3000 portfolio
+```
+
+
+### List images
+```sh
+docker images   # or podman images
+```
+
+### Clean up unused containers/images
+```sh
+docker system prune   # or podman system prune
+```
+
 ## Project Structure
 
 ```
