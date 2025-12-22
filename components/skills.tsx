@@ -30,60 +30,59 @@ export default function Skills() {
       id: "programming",
       label: "Programming",
       skills: [
-        { name: "C", level: 85 },
-        { name: "HTML", level: 90 },
-        { name: "CSS", level: 85 },
-        { name: "JavaScript", level: 80 },
-        { name: "Python", level: 75 },
-        { name: "Bash", level: 70 },
+        { name: "C", icon: "c", level: 85 },
+        { name: "HTML", icon: "html5", level: 90 },
+        { name: "CSS", icon: "css", level: 85 },
+        { name: "JavaScript", icon: "javascript", level: 80 },
+        { name: "Python", icon: "python", level: 75 },
+        { name: "Bash", icon: "gnubash", level: 70 },
       ],
     },
     {
       id: "frameworks",
       label: "Frameworks",
       skills: [
-        { name: "React", level: 80 },
-        { name: "Node.js", level: 75 },
-        { name: "Express", level: 70 },
-        { name: "Next.js", level: 65 },
+        { name: "React", icon: "react", level: 80 },
+        { name: "Node.js", icon: "nodedotjs", level: 75 },
+        { name: "Express", icon: "express", level: 70 },
+        { name: "Next.js", icon: "nextdotjs", level: 65 },
       ],
     },
     {
       id: "databases",
       label: "Databases",
       skills: [
-        { name: "MySQL", level: 80 },
-        { name: "MongoDB", level: 65 },
-        { name: "SQLite", level: 70 },
+        { name: "MySQL", icon: "mysql", level: 80 },
+        { name: "MongoDB", icon: "mongodb", level: 65 },
+        { name: "SQLite", icon: "sqlite", level: 70 },
       ],
     },
     {
       id: "security",
       label: "Security",
       skills: [
-        { name: "Network Security", level: 80 },
-        { name: "Penetration Testing", level: 70 },
-        { name: "Security Auditing", level: 65 },
-        { name: "Cryptography", level: 60 },
+        { name: "Network Security", icon: "cisco", level: 80 },
+        { name: "Penetration Testing", icon: "parrotsecurity", level: 70 },
+        { name: "Security Auditing", icon: "owasp", level: 65 },
+        { name: "Cryptography", icon: "letsencrypt", level: 60 },
       ],
     },
-{
-  id: "cloud",
-  label: "Cloud & DevOps",
-  skills: [
-    { name: "Linux", level: 95 },
-    { name: "Azure", level: 70 },
-    { name: "VPS (Compute)", level: 95 },
-    { name: "Docker", level: 85 },
-    { name: "Ansible", level: 70 },
-    { name: "CI/CD (DevOps)", level: 85 },
-    { name: "Caddy Server", level: 90 },
-    { name: "Nginx", level: 95 },
-    { name: "Cloud Security", level: 85 },
-  ],
-},
-
-  ]
+    {
+      id: "cloud",
+      label: "Cloud & DevOps",
+      skills: [
+        { name: "Linux", icon: "linux", level: 95 },
+        { name: "Azure", level: 70 },
+        { name: "VPS (Compute)", icon: "digitalocean", level: 95 },
+        { name: "Docker", icon: "docker", level: 85 },
+        { name: "Ansible", icon: "ansible", level: 70 },
+        { name: "CI/CD (DevOps)", icon: "githubactions", level: 85 },
+        { name: "Caddy Server", icon: "caddy", level: 90 },
+        { name: "Nginx", icon: "nginx", level: 95 },
+        { name: "Cloud Security", icon: "googlecloud", level: 85 },
+      ],
+    },
+  ];
 
   return (
     <section id="skills" className="py-14 sm:py-20 bg-[#0c0c1a]">
@@ -113,8 +112,18 @@ export default function Skills() {
               <TabsContent key={category.id} value={category.id} className="space-y-5 sm:space-y-6 mt-3 sm:mt-4">
                 {category.skills.map((skill, index) => (
                   <div key={index} className="mb-5 sm:mb-6">
-                    <div className="flex flex-col xs:flex-row xs:justify-between gap-1 mb-1 sm:mb-2 text-sm sm:text-base">
-                      <span className="font-medium">{skill.name}</span>
+                    <div className="flex flex-col xs:flex-row xs:justify-between gap-1 mb-1 sm:mb-2 text-sm sm:text-base items-center">
+                      <span className="flex items-center gap-2 font-medium">
+                        {skill.icon && (
+                          <img
+                            src={`https://cdn.simpleicons.org/${skill.icon}`}
+                            alt={skill.name}
+                            className="w-6 h-6 inline-block align-middle"
+                            loading="lazy"
+                          />
+                        )}
+                        {skill.name}
+                      </span>
                       <span className="text-blue-500">{skill.level}%</span>
                     </div>
                     <div className="skill-bar">
