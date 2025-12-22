@@ -52,7 +52,7 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#181f2a] rounded-2xl overflow-hidden shadow-lg flex flex-col h-full"
+                className="bg-[#181f2a] rounded-2xl overflow-hidden shadow-lg flex flex-col h-full transition-all duration-200 ease-out cursor-pointer border border-transparent hover:border-blue-500 hover:bg-[#232b3a] hover:scale-[1.04] hover:shadow-2xl hover:-translate-y-1"
               >
                 <div className="relative h-40 sm:h-48 flex items-center justify-center overflow-hidden">
                   <Image
