@@ -48,7 +48,7 @@ PORTFOLIO/
 
 - Update your information in the relevant components (e.g., `about.tsx`, `contact.tsx`, `projects.tsx`).
 - Replace the preview image in `/public/preview.png` with your own.
-- Modify styles in `styles/globals.css` and `tailwind.config.ts` as needed.
+- Modify styles in `app/globals.css` and `tailwind.config.ts` as needed.
 
 ## Contributing
 
