@@ -21,6 +21,12 @@ COPY . .
 # Build the Next.js app
 RUN pnpm build
 
+
+# Create a non-root user and switch to it
+RUN adduser -D appuser \
+	&& chown -R appuser /app
+USER appuser
+
 # Expose port (default Next.js port)
 EXPOSE 3000
 
