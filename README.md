@@ -69,7 +69,6 @@ PORTFOLIO/
 ├── hooks/              # Custom React hooks
 ├── lib/                # Utility functions
 ├── public/             # Static assets (preview.png, etc.)
-├── styles/             # Global styles
 ├── next.config.mjs     # Next.js configuration
 ├── tailwind.config.ts  # Tailwind CSS configuration
 └── ...
