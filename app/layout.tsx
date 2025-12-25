@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import GoogleAnalytics from "@/components/google-analytics"
 import { Suspense } from "react"
+import SnowfallClient from "@/components/snowfall-client"
 
 
 
@@ -145,9 +146,10 @@ export default function RootLayout({
 
   
       </head>
-      <body className="font-sans">{/* Using fallback font due to network restrictions */}
+      <body className="font-sans">
         <Suspense fallback={null}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+            <SnowfallClient />
             {children}
             <Toaster />
             <GoogleAnalytics />
