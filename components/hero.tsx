@@ -2,7 +2,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Ballpit from "./Ballpit"
+import LiquidEther from "./LiquidEther"
 import Image from "next/image"
 import { ChevronDown, Terminal } from "lucide-react"
 import Script from "next/script"
@@ -88,9 +88,25 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-      {/* Ballpit background */}
-      <div style={{position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden', minHeight: '500px', maxHeight: '100vh', width: '100%'}}>
-        <Ballpit count={200} gravity={0.7} friction={0.8} wallBounce={0.95} followCursor={true} />
+      {/* Liquid Ether background */}
+      <div style={{ width: '100%', height: 600, position: 'absolute', inset: 0, zIndex: 0 }}>
+        <LiquidEther
+          colors={[ '#5227FF', '#FF9FFC', '#B19EEF' ]}
+          mouseForce={20}
+          cursorSize={100}
+          isViscous={false}
+          viscous={30}
+          iterationsViscous={32}
+          iterationsPoisson={32}
+          resolution={0.5}
+          isBounce={false}
+          autoDemo={true}
+          autoSpeed={0.5}
+          autoIntensity={2.2}
+          takeoverDuration={0.25}
+          autoResumeDelay={3000}
+          autoRampDuration={0.6}
+        />
       </div>
       {/* Content */}
       <div className="container mx-auto px-4 z-10 text-center stagger-animation">
