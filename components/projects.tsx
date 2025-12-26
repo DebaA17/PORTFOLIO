@@ -52,7 +52,14 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#181f2a] rounded-2xl overflow-hidden shadow-lg flex flex-col h-full transition-all duration-200 ease-out cursor-pointer border border-transparent hover:border-blue-500 hover:bg-[#232b3a] hover:scale-[1.04] hover:shadow-2xl hover:-translate-y-1"
+                whileHover={{
+                  scale: 1.045,
+                  y: -6,
+                  boxShadow: "0 6px 28px 0 rgba(162,89,255,0.18)",
+                  transition: { type: 'spring', stiffness: 400, damping: 28 },
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-[#181f2a] rounded-2xl overflow-hidden shadow-lg flex flex-col h-full transition-all duration-150 ease-out cursor-pointer border border-transparent hover:border-blue-500 hover:bg-[#232b3a]"
               >
                 <div className="relative h-40 sm:h-48 flex items-center justify-center overflow-hidden">
                   <Image

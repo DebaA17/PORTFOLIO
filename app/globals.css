@@ -1,3 +1,7 @@
+/* Hide system cursor globally when custom cursor is present */
+body {
+  cursor: none !important;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
