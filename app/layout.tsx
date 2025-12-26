@@ -2,7 +2,6 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import ElasticCursor from "@/components/ElasticCursor"
 import { Toaster } from "@/components/ui/toaster"
 import GoogleAnalytics from "@/components/google-analytics"
 import { Suspense } from "react"
@@ -151,7 +150,6 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
             <SnowfallClient />
-            <ElasticCursor />
             {children}
             <Toaster />
             <GoogleAnalytics />
