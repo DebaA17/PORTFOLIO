@@ -49,6 +49,25 @@ export default function ElasticCursor() {
     return () => cancelAnimationFrame(raf);
   }, []);
 
+  // Hide system cursor only on mobile/touch devices (pointer: coarse)
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @media (pointer: coarse) {
+        html, body, * {
+          cursor: none !important;
+        }
+        *:hover, *:active, *:focus {
+          cursor: none !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      if (style.parentNode) style.parentNode.removeChild(style);
+    };
+  }, []);
+
   return (
     <>
       {/* Outer circle */}
