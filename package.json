@@ -46,6 +46,7 @@
     "embla-carousel-react": "latest",
     "framer-motion": "latest",
     "geist": "^1.5.1",
+    "gsap": "^3.14.2",
     "input-otp": "latest",
     "lucide-react": "^0.454.0",
     "next": "16.1.1",
@@ -62,6 +63,7 @@
     "sonner": "latest",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
+    "three": "^0.182.0",
     "vaul": "latest",
     "zod": "^3.25.76"
   },
@@ -70,6 +72,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@types/sanitize-html": "^2.16.0",
+    "@types/three": "^0.182.0",
     "baseline-browser-mapping": "^2.9.11",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.19",
