@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster"
 import GoogleAnalytics from "@/components/google-analytics"
 import { Suspense } from "react"
 import SnowfallClient from "@/components/snowfall-client"
-
+import HappyNewYear from "@/components/happy-new-year"
 
 
 const siteUrl =
@@ -150,6 +150,8 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
             <SnowfallClient />
+            {/* Show HappyNewYear on 27th Dec for testing (change back to Jan 1 after) */}
+            <HappyNewYear />
             {children}
             <Toaster />
             <GoogleAnalytics />
