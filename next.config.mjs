@@ -16,6 +16,8 @@ const nextConfig = {
 
   images: {
     formats: ["image/avif", "image/webp"],
+    
+    minimumCacheTTL: 60 * 60 * 24,
     remotePatterns: [
       {
         protocol: "https",
@@ -84,12 +86,15 @@ const nextConfig = {
           { key: "Server", value: "Debasis-Security-Server" },
           { key: "X-Author", value: "Debasis Biswas - Cybersecurity Expert" },
           { key: "X-Security-Contact", value: "forensic@debasisbiswas.me" },
+        ],
+      },
 
-          // Cache-Control (Netlify + Cloudflare)
-          {
-            key: "Cache-Control",
-            value: "public, max-age=0, must-revalidate",
-          },
+      // Next.js Image Optimization output
+      // Do NOT force "must-revalidate" here, or images will re-fetch/re-optimize often.
+      {
+        source: "/_next/image",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
       },
 
@@ -98,6 +103,19 @@ const nextConfig = {
         source: "/_next/static/(.*)",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+
+      {
+        source: "/certifications/(.*)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=604800, immutable" },
+        ],
+      },
+      {
+        source: "/(DEBASIS\\.jpg|add-project-bg\\.jpg)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=604800, immutable" },
         ],
       },
 

@@ -1,0 +1,28 @@
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Next.js Image Optimization endpoint (query-string based)
+  for = "/_next/image*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Public certification images
+  for = "/certifications/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, immutable"
+
+[[headers]]
+  # Key hero/background images
+  for = "/DEBASIS.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, immutable"
+
+[[headers]]
+  for = "/add-project-bg.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, immutable"
