@@ -1,25 +1,27 @@
-
-
 "use client"
 import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
-
 
 export default function HappyNewYear() {
   const [show, setShow] = useState(true);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [year, setYear] = useState<number | null>(null);
   const [animateOut, setAnimateOut] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const outTimer = setTimeout(() => setAnimateOut(true), 3200);
     const hideTimer = setTimeout(() => setShow(false), 4000);
+
     function updateSize() {
       setDimensions({ width: window.innerWidth, height: window.innerHeight });
     }
     updateSize();
     window.addEventListener("resize", updateSize);
+
     setYear(new Date().getFullYear());
+
     return () => {
       clearTimeout(hideTimer);
       clearTimeout(outTimer);
@@ -27,13 +29,12 @@ export default function HappyNewYear() {
     };
   }, []);
 
-  if (typeof window !== "undefined") {
-    const now = new Date();
-    const isJan1 = now.getMonth() === 0 && now.getDate() === 1;
-    if (!isJan1 || !show) return null;
-  } else {
-    return null;
-  }
+  if (!isMounted) return null;
+
+  const now = new Date();
+  const isJan1 = now.getMonth() === 0 && now.getDate() === 1;
+
+  if (!isJan1 || !show || !year) return null;
 
   return (
     <div
@@ -54,6 +55,7 @@ export default function HappyNewYear() {
         fontWeight: "bold",
         animation: "fadeIn 1s"
       }}
+      suppressHydrationWarning={true}
     >
       <Confetti
         width={dimensions.width}
