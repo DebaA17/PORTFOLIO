@@ -1,79 +1,12 @@
 
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import Image from "next/image"
 import { ChevronDown, Terminal } from "lucide-react"
-import Script from "next/script"
-
-// Add TypeScript declaration for window.tsParticles
-declare global {
-interface Window {
-tsParticles: any;
-}
-}
 
 export default function Hero() {
 const scrollRef = useRef<HTMLDivElement>(null)
-const [particlesLoaded, setParticlesLoaded] = useState(false)
-
-// Restore particle background initialization
-useEffect(() => {
-if (!particlesLoaded) return;
-const initParticles = () => {
-try {
-if (typeof window !== "undefined" && window.tsParticles) {
-window.tsParticles.load("tsparticles", {
-fullScreen: { enable: false, zIndex: 0 },
-particles: {
-number: { value: 30, density: { enable: true, value_area: 800 } },
-color: { value: "#3b82f6" },
-shape: { type: "circle" },
-opacity: { value: 0.5, random: true },
-size: { value: 3, random: true },
-move: {
-enable: true,
-speed: 1,
-direction: "none",
-random: true,
-straight: false,
-out_mode: "out"
-},
-line_linked: {
-enable: true,
-distance: 150,
-color: "#3b82f6",
-opacity: 0.2,
-width: 1
-}
-},
-interactivity: {
-detect_on: "canvas",
-events: {
-onhover: { enable: true, mode: "grab" },
-resize: true
-},
-modes: {
-grab: {
-distance: 140,
-line_linked: { opacity: 0.5 }
-}
-}
-},
-retina_detect: true
-});
-}
-} catch (error) {
-console.error("Failed to initialize particles:", error);
-}
-};
-initParticles();
-return () => {
-if (typeof window !== "undefined" && window.tsParticles) {
-window.tsParticles.destroy("tsparticles");
-}
-};
-}, [particlesLoaded]);
 
 // Handle scroll down button click
 const scrollToAbout = () => {
@@ -93,9 +26,12 @@ const roles = ["Cybersecurity Enthusiast", "Network Engineering", "Linux Trouble
 let roleIndex = 0
 let charIndex = 0
 let isDeleting = false
+let cancelled = false
+let timeoutId: ReturnType<typeof setTimeout> | null = null
 let textElement = document.getElementById("rotating-text")
 
 const type = () => {
+if (cancelled) return
 if (!textElement) {
 textElement = document.getElementById("rotating-text")
 if (!textElement) return
@@ -112,9 +48,9 @@ charIndex--
 if (charIndex === 0) {
 isDeleting = false
 roleIndex = (roleIndex + 1) % roles.length
-setTimeout(type, 300) // Shorter pause before typing next word
+timeoutId = setTimeout(type, 300) // Shorter pause before typing next word
 } else {
-setTimeout(type, 30) // Faster deletion speed
+timeoutId = setTimeout(type, 30) // Faster deletion speed
 }
 } else {
 // Typing text - faster typing
@@ -124,34 +60,28 @@ charIndex++
 // When typing is complete
 if (charIndex === currentRole.length) {
 isDeleting = true
-setTimeout(type, 1200) // Slightly shorter pause before deleting
+timeoutId = setTimeout(type, 1200) // Slightly shorter pause before deleting
 } else {
 // Variable typing speed - faster for better effect
 const typingSpeed = Math.random() * 40 + 30 // Between 30ms and 70ms
-setTimeout(type, typingSpeed)
+timeoutId = setTimeout(type, typingSpeed)
 }
 }
 }
 
 // Start the typewriter effect
-const typewriterTimeout = setTimeout(type, 1000)
+timeoutId = setTimeout(type, 1000)
 
 // Clean up
 return () => {
-clearTimeout(typewriterTimeout)
+cancelled = true
+if (timeoutId) clearTimeout(timeoutId)
 textElement = null
 }
 }, [])
 
 return (
 <>
-{/* Load tsParticles from CDN */}
-<Script
-src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"
-onLoad={() => setParticlesLoaded(true)}
-strategy="afterInteractive"
-/>
-
 <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
 {/* Optimized background image using next/image */}
 <div className="absolute inset-0 z-[-2]">
@@ -165,13 +95,6 @@ className="object-cover w-full h-full"
 sizes="100vw"
 />
 </div>
-{/* Particle background */}
-<div
-id="tsparticles"
-className="absolute inset-0 z-0"
-style={{ position: "absolute", width: "100%", height: "100%" }}
-></div>
-
 {/* Fallback background gradient in case particles fail */}
 <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a14] to-[#0c0c1a] z-[-1]"></div>
 

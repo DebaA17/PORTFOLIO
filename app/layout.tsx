@@ -158,7 +158,6 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
             <SnowfallClient />
-            {/* Show HappyNewYear on 27th Dec for testing (change back to Jan 1 after) */}
             <HappyNewYear />
             {children}
             <Toaster />

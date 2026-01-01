@@ -76,71 +76,7 @@
   background: #2563eb;
 }
 
-/* Background gradient animation */
-.animated-gradient {
-  background: linear-gradient(-45deg, #0a0a14, #0c0c1a, #1e1b4b, #0c0c1a, #0a0a14);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-}
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Animated particles */
-.particles-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: #3b82f6;
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: float-particle linear infinite;
-}
-
-.particle:nth-child(2n) {
-  background: #8b5cf6;
-  width: 3px;
-  height: 3px;
-}
-
-.particle:nth-child(3n) {
-  background: #06b6d4;
-  width: 2px;
-  height: 2px;
-}
-
-@keyframes float-particle {
-  0% {
-    transform: translateY(100vh) translateX(0px);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.6;
-  }
-  90% {
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateY(-100px) translateX(100px);
-    opacity: 0;
-  }
-}
 
 /* Profile Image Styles */
 .profile-image-container {
@@ -207,6 +143,17 @@
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradientBg 15s ease infinite;
+}
+
+.bg-soft-animate {
+  background-size: 200% 200%;
+  animation: gradientBg 18s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-soft-animate {
+    animation: none;
+  }
 }
 
 .animate-spin-slow {
