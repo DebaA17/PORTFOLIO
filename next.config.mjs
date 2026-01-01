@@ -82,6 +82,27 @@ const nextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-DNS-Prefetch-Control", value: "on" },
 
+          {
+            key: "Permissions-Policy",
+            value: [
+              "accelerometer=()",
+              "autoplay=()",
+              "camera=()",
+              "encrypted-media=()",
+              "geolocation=()",
+              "gyroscope=()",
+              "magnetometer=()",
+              "microphone=()",
+              "midi=()",
+              "payment=()",
+              "picture-in-picture=()",
+              "publickey-credentials-get=()",
+              "screen-wake-lock=()",
+              "usb=()",
+              "web-share=()",
+            ].join(", "),
+          },
+
           // Branding
           { key: "Server", value: "Debasis-Security-Server" },
           { key: "X-Author", value: "Debasis Biswas - Cybersecurity Expert" },
