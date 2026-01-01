@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = 'force-static';
 import { useEffect, useRef, useState } from "react";
 
 const GAME_WIDTH = 800;

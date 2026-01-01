@@ -1,3 +1,5 @@
+
+export const dynamic = 'force-static';
 import { title } from "process";
 import React from "react";
 import Image from "next/image"
