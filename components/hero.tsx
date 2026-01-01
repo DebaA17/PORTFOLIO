@@ -4,6 +4,7 @@
 import { useEffect, useRef } from "react"
 import Image from "next/image"
 import { ChevronDown, Terminal } from "lucide-react"
+import Lightning from "@/components/Lightning"
 
 export default function Hero() {
 const scrollRef = useRef<HTMLDivElement>(null)
@@ -98,6 +99,11 @@ sizes="100vw"
 {/* Fallback background gradient in case particles fail */}
 <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a14] to-[#0c0c1a] z-[-1]"></div>
 
+<div className="absolute inset-0 z-0 pointer-events-none select-none">
+  <div style={{ width: "100%", height: "100%", position: "relative" }}>
+    <Lightning hue={220} xOffset={0} speed={1} intensity={1} size={1} />
+  </div>
+</div>
 {/* Content */}
 <div className="container mx-auto px-4 z-10 text-center stagger-animation">
 {/* Profile image */}
