@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-static";
+
 export async function GET() {
   const securityTxt = `Contact: mailto:forensic@debasisbiswas.me
 Expires: 2026-12-31T23:59:59.000Z
