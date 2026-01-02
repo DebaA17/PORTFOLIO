@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useEffect, useRef, useState, useCallback } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { Mail, Github, Linkedin, Send, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -18,20 +18,6 @@ export default function Contact() {
     subject: "",
     message: "",
   })
-  const formRef = useRef<HTMLFormElement>(null);
-  const [token, setToken] = useState("");
-  const turnstileRef = useRef<HTMLDivElement | null>(null);
-
-  const renderTurnstile = useCallback(() => {
-    if (window.turnstile && turnstileRef.current) {
-      window.turnstile.render(turnstileRef.current, {
-        sitekey: "0x4AAAAAAB1BIYgpO762-xYY",
-        callback: (token: string) => setToken(token),
-        "expired-callback": () => setToken(""),
-        "error-callback": () => setToken("")
-      });
-    }
-  }, []);
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const { toast } = useToast()
@@ -50,24 +36,15 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!token) {
-      toast({
-        title: "Verification required",
-        description: "Please complete the Turnstile verification.",
-        variant: "destructive",
-      });
-      return;
-    }
     setIsSubmitting(true);
     setSubmitSuccess(false);
     try {
-      const payload = { ...formData, "cf-turnstile-response": token };
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(formData),
       });
       if (response.ok) {
         toast({
@@ -113,26 +90,6 @@ export default function Contact() {
       color: "hover:text-blue-400",
     },
   ];
-
-  useEffect(() => {
-    if (!window.turnstile) {
-      const script = document.createElement("script");
-      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad";
-      script.async = true;
-      window.onTurnstileLoad = () => {
-        renderTurnstile();
-      };
-      document.body.appendChild(script);
-    } else {
-      renderTurnstile();
-    }
-    // Cleanup
-    return () => {
-      if (turnstileRef.current && window.turnstile) {
-        window.turnstile.remove(turnstileRef.current);
-      }
-    };
-  }, [renderTurnstile]);
 
   return (
     <section id="contact" className="py-20 bg-[#0c0c1a]">
@@ -245,7 +202,6 @@ export default function Contact() {
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div ref={turnstileRef}></div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium mb-2">

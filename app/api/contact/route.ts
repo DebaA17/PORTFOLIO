@@ -128,25 +128,6 @@ export async function POST(request: NextRequest) {
     }
     const body = await request.json();
 
-    // Cloudflare Turnstile verification
-    const turnstileToken = body["cf-turnstile-response"];
-    if (!turnstileToken) {
-      return NextResponse.json({ error: "Turnstile verification failed." }, { status: 400 });
-    }
-    const secretKey = process.env.CF_TURNSTILE_SECRET;
-    if (!secretKey) {
-      return NextResponse.json({ error: "Turnstile secret key not configured." }, { status: 500 });
-    }
-    const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=${secretKey}&response=${turnstileToken}`,
-    });
-    const verifyData = await verifyRes.json();
-    if (!verifyData.success) {
-      return NextResponse.json({ error: "Turnstile verification failed." }, { status: 400 });
-    }
-
     if (!body.name || !body.email || !body.message) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
