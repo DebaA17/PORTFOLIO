@@ -20,7 +20,23 @@ export default function Footer() {
             </p>
           </div>
           {/* Right section: Social/Privacy links */}
-          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4">
+            <div className="flex flex-col items-center md:items-start">
+              <a
+                href="/pgp.asc"
+                download
+                className="text-blue-500 hover:text-blue-400 transition-colors text-base sm:text-sm font-medium"
+              >
+                Download PGP public key
+              </a>
+              <span className="text-gray-400 text-xs mt-1">
+                Fingerprint:{" "}
+                <span className="font-mono font-semibold text-gray-200 break-all">
+                  B521 D109 5C63 E077 EAE8  54E9 6805 708F 78A1 9272
+                </span>
+              </span>
+            </div>
+
             <a
               href="https://github.com/DebaA17"
               target="_blank"
