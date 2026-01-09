@@ -400,26 +400,6 @@
   transform: translateY(0);
 }
 
-/* Skill bar animations */
-.skill-bar {
-  position: relative;
-  height: 8px;
-  border-radius: 4px;
-  background: #1e293b;
-  overflow: hidden;
-}
-
-.skill-progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: linear-gradient(90deg, #3b82f6, #60a5fa);
-  border-radius: 4px;
-  width: 0;
-  transition: width 1.5s ease-out;
-}
-
 /* Button hover effects */
 button {
   transition: all 0.3s ease;
