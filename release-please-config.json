@@ -1,0 +1,12 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "package-name": "my-portfolio",
+      "changelog-path": "changelog.md"
+    }
+  },
+  "pull-request-title-pattern": "chore(release): ${version}",
+  "pull-request-header": "Auto-generated release PR",
+  "draft-pull-request": false
+}
