@@ -4,10 +4,12 @@ export const dynamic = "force-static";
 
 export async function GET() {
   const securityTxt = `Contact: mailto:forensic@debasisbiswas.me
+Contact: https://github.com/DebaA17/PORTFOLIO/security/advisories/new
 Expires: 2026-12-31T23:59:59.000Z
-Acknowledgements: https://debasisbiswas.me/security-policy.html
-Policy: https://debasisbiswas.me/privacy-policy
 Preferred-Languages: en
+Canonical: https://debasisbiswas.me/.well-known/security.txt
+Policy: https://debasisbiswas.me/security/reporting
+Encryption: https://debasisbiswas.me/pgp.asc
 `;
 
   return new NextResponse(securityTxt, {

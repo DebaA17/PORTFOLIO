@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server"
 
 export async function GET() {
-  const securityTxt = `Contact: mailto:admin@debasisbiswas.me
-Contact: https://debasisbiswas.me/#contact
-Expires: 2025-12-31T23:59:59.000Z
-Encryption: https://debasisbiswas.me/pgp-key.txt
+  const securityTxt = `Contact: mailto:forensic@debasisbiswas.me
+Contact: https://github.com/DebaA17/PORTFOLIO/security/advisories/new
+Expires: 2026-12-31T23:59:59.000Z
+Encryption: https://debasisbiswas.me/pgp.asc
 Preferred-Languages: en
 Canonical: https://debasisbiswas.me/.well-known/security.txt
-Policy: https://debasisbiswas.me/security-policy
+Policy: https://debasisbiswas.me/security/reporting
 Hiring: https://debasisbiswas.me/#contact
 
 # Security Policy
