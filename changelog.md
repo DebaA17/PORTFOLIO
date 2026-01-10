@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.1.1...my-portfolio-v0.2.0) (2026-01-10)
+
+
+### Features
+
+* **security:** update security contact information and add reporting page ([830781f](https://github.com/DebaA17/PORTFOLIO/commit/830781fcf649d9ba660319d7df87f9bb6a0a7995))
+
 ## [0.1.1](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.1.0...my-portfolio-v0.1.1) (2026-01-10)
 
 
