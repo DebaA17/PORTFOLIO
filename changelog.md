@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.2.0...my-portfolio-v0.3.0) (2026-01-11)
+
+
+### Features
+
+* add /resume page with embedded PDF preview ([df671c2](https://github.com/DebaA17/PORTFOLIO/commit/df671c2b078d933618cd24a7145e884a6ac54a37))
+
 ## [0.2.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.1.1...my-portfolio-v0.2.0) (2026-01-10)
 
 
