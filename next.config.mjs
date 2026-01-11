@@ -110,6 +110,17 @@ const nextConfig = {
         ],
       },
 
+      {
+        source: "/Debasis_Biswas_Resume.pdf",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          {
+            key: "Content-Security-Policy",
+            value: "default-src 'none'; frame-ancestors 'self'",
+          },
+        ],
+      },
+
       // Next.js Image Optimization output
       // Do NOT force "must-revalidate" here, or images will re-fetch/re-optimize often.
       {
