@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.3.0...my-portfolio-v0.4.0) (2026-01-13)
+
+
+### Features
+
+* enhance Telegram notification handling and response structure ([1dd9637](https://github.com/DebaA17/PORTFOLIO/commit/1dd963725f694310403c151b1ea2021efb603ed2))
+
 ## [0.3.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.2.0...my-portfolio-v0.3.0) (2026-01-11)
 
 
