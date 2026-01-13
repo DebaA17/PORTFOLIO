@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.3.0...my-portfolio-v0.4.0) (2026-01-13)
+
+
+### Features
+
+* add Docker smoke test workflow and update dependencies ([36e0c2f](https://github.com/DebaA17/PORTFOLIO/commit/36e0c2fb47a0eb6e0df0641c2672a46ebfe4c38e))
+
 ## [0.3.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.2.0...my-portfolio-v0.3.0) (2026-01-11)
 
 
