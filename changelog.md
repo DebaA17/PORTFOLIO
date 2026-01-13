@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.3.0...my-portfolio-v0.3.1) (2026-01-13)
+
+
+### Bug Fixes
+
+* update preview image for improved display and added Docker workflow ([7aab5da](https://github.com/DebaA17/PORTFOLIO/commit/7aab5da069151c670275a62d3bb92cce6974a9bf))
+
 ## [0.3.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.2.0...my-portfolio-v0.3.0) (2026-01-11)
 
 
