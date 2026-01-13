@@ -70,28 +70,35 @@ function detectSpam(data: any): boolean {
   return spamPatterns.some((pattern) => pattern.test(text))
 }
 
-async function sendToTelegram(data: any): Promise<boolean> {
+type TelegramSendResult =
+  | { enabled: false; sent: false; reason: "missing_credentials" }
+  | { enabled: true; sent: true }
+  | { enabled: true; sent: false; status?: number; error?: string }
+
+async function sendToTelegram(data: any): Promise<TelegramSendResult> {
   const botToken = process.env.TELEGRAM_BOT_TOKEN
   const chatId = process.env.TELEGRAM_CHAT_ID
 
   if (!botToken || !chatId) {
     console.log("Telegram credentials not configured - skipping Telegram notification")
-    return true // Return true to not fail the request
+    return { enabled: false, sent: false, reason: "missing_credentials" }
   }
 
-  const message = `
-🔔 *New Contact Form Submission*
-
-👤 *Name:* ${data.name}
-📧 *Email:* ${data.email}
-📝 *Subject:* ${data.subject || "No subject"}
-
-💬 *Message:*
-${data.message}
-
-🌐 *Website:* debasisbiswas.me
-⏰ *Time:* ${new Date().toLocaleString()}
-  `.trim()
+  // Important: Don't use Markdown parse_mode here.
+  // User input often contains characters that break Markdown and cause Telegram to reject the message.
+  const message = [
+    "New Contact Form Submission",
+    "",
+    `Name: ${data.name}`,
+    `Email: ${data.email}`,
+    `Subject: ${data.subject || "No subject"}`,
+    "",
+    "Message:",
+    `${data.message}`,
+    "",
+    "Website: debasisbiswas.me",
+    `Time: ${new Date().toLocaleString()}`,
+  ].join("\n")
 
   try {
     const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
@@ -102,21 +109,25 @@ ${data.message}
       body: JSON.stringify({
         chat_id: chatId,
         text: message,
-        parse_mode: "Markdown",
+        disable_web_page_preview: true,
       }),
     })
 
     if (!response.ok) {
       const errorData = await response.text()
       console.error("Telegram API error:", response.status, errorData)
-      return false
+      return { enabled: true, sent: false, status: response.status, error: errorData }
     }
 
     console.log("Message sent to Telegram successfully")
-    return true
+    return { enabled: true, sent: true }
   } catch (error) {
     console.error("Telegram send error:", error)
-    return false
+    return {
+      enabled: true,
+      sent: false,
+      error: error instanceof Error ? error.message : String(error),
+    }
   }
 }
 
@@ -151,15 +162,16 @@ export async function POST(request: NextRequest) {
       subject: sanitizedData.subject,
       ip: clientIP,
     });
-    try {
-      await sendToTelegram(sanitizedData);
-    } catch (telegramError) {
-      console.error("Telegram notification failed:", telegramError);
-    }
+
+    const telegramResult = await sendToTelegram(sanitizedData);
+    // Safe diagnostic: does NOT include secrets.
+    console.log("Telegram notification result:", telegramResult);
+
     return NextResponse.json(
       {
         success: true,
         message: "Message sent successfully!",
+        telegram: telegramResult,
       },
       { status: 200 },
     );
