@@ -3,7 +3,6 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
-import GoogleAnalytics from "@/components/google-analytics"
 import { Suspense } from "react"
 import SnowfallClient from "@/components/snowfall-client"
 import HappyNewYear from "@/components/happy-new-year"
@@ -105,7 +104,6 @@ export default function RootLayout({
             <SplashCursor />
             {children}
             <Toaster />
-            <GoogleAnalytics gaId="G-X31N429BP8" />
           </ThemeProvider>
         </Suspense>
       </body>

@@ -14,11 +14,10 @@ export default function PrivacyPolicy() {
         <li>IP address</li>
         <li>Device and browser information</li>
         <li>IP-based location and ISP</li>
-        <li>Session recordings (mouse movements, clicks, scrolls, etc.)</li>
       </ul>
       <h2 className="text-xl font-semibold mt-8 mb-2">How We Collect Data</h2>
       <p className="mb-4">
-        We use analytics and session recording tools to collect the above information. These tools help us understand how users interact with our website and improve security.
+        We collect the above information through standard server logs and security monitoring. We do not use analytics or session recording tools.
       </p>
       <h2 className="text-xl font-semibold mt-8 mb-2">Why We Collect Data</h2>
       <p className="mb-4">
@@ -26,7 +25,7 @@ export default function PrivacyPolicy() {
       </p>
       <h2 className="text-xl font-semibold mt-8 mb-2">Data Sharing & AI Usage</h2>
       <p className="mb-4">
-        We do <strong>not</strong> share your data with any third parties except as required by law (see below). All collected data is used only by us for security and analytics.<br />
+        We do <strong>not</strong> share your data with any third parties except as required by law (see below). All collected data is used only by us for security and basic site operations.<br />
         <br />
         <strong>Personal information submitted through the contact form (such as your name, email address, or message) is also kept strictly confidential and is <u>never</u> shared with third parties unless required by law.</strong><br />
         <br />
@@ -47,7 +46,7 @@ export default function PrivacyPolicy() {
       <p className="mb-4">
         If you have concerns about your privacy or wish to request more information, please contact us using the contact form on this website.
       </p>
-      <p className="text-sm text-gray-500 mt-8">Last updated: November 22, 2025</p>
+      <p className="text-sm text-gray-500 mt-8">Last updated: January 14, 2026</p>
     </main>
   );
 }
