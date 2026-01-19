@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.5.0...my-portfolio-v0.5.1) (2026-01-19)
+
+
+### Bug Fixes
+
+* extend snowfall season to include February 1st and update package dependencies ([652cf57](https://github.com/DebaA17/PORTFOLIO/commit/652cf57513411c87fce3e1458a66050e481fe5e0))
+
 ## [0.5.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.4.0...my-portfolio-v0.5.0) (2026-01-14)
 
 
