@@ -9,8 +9,9 @@ function isSnowfallSeason() {
   // Nov 1 to Dec 31
   if (month === 10 && date >= 1) return true
   if (month === 11) return true
-  // Jan 1 to Jan 28
-  if (month === 0 && date <= 28) return true
+  // Jan 1 to Feb 1 (extended to include Feb 1st)
+  if (month === 0) return true
+  if (month === 1 && date <= 1) return true
   return false
 }
 
