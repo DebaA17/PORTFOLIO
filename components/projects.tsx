@@ -1,4 +1,3 @@
-  // Use the same background image for all projects
 "use client";
 
 const projectBg = "/add-project-bg.jpg";
@@ -20,7 +19,7 @@ export default function Projects() {
         return res.json()
       })
       .then((data) => {
-  const excluded = ["DebaA17", "MY-DP", "chat-portfolio", "PYTHON_LAB", "golang-learning", "DemoLoginPage", "llm-chat-app-template", "DSA_LAB", "pacguard"];
+  const excluded = ["DebaA17", "chat-portfolio", "inventory_Hub", "PYTHON_LAB", "golang-learning", "DemoLoginPage", "llm-chat-app-template", "DSA_LAB", "pacguard"];
   setRepos(data.filter((repo: any) => !excluded.includes(repo.name)))
         setLoading(false)
       })
@@ -52,14 +51,9 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{
-                  scale: 1.045,
-                  y: -6,
-                  boxShadow: "0 6px 28px 0 rgba(162,89,255,0.18)",
-                  transition: { type: 'spring', stiffness: 400, damping: 28 },
-                }}
+                // hover-to-float animation removed
                 whileTap={{ scale: 0.98 }}
-                className="bg-[#181f2a] rounded-2xl overflow-hidden shadow-lg flex flex-col h-full transition-all duration-150 ease-out cursor-pointer border border-transparent hover:border-blue-500 hover:bg-[#232b3a]"
+                className="bg-[#181f2a] rounded-2xl overflow-hidden shadow-lg flex flex-col h-full transition-colors duration-150 ease-out cursor-pointer border border-transparent hover:border-blue-500 hover:bg-[#232b3a]"
               >
                 <div className="relative h-40 sm:h-48 flex items-center justify-center overflow-hidden">
                   <Image
