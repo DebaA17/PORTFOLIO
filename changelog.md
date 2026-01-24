@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.5.1...my-portfolio-v0.6.0) (2026-01-24)
+
+
+### Features
+
+* add OCI standard labels to Dockerfile and update package versions in pnpm-lock.yaml ([eed1e85](https://github.com/DebaA17/PORTFOLIO/commit/eed1e85b16df1ea9767d7acfcfa9539fe4e940f5))
+
 ## [0.5.1](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.5.0...my-portfolio-v0.5.1) (2026-01-19)
 
 
