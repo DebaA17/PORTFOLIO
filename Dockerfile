@@ -1,6 +1,11 @@
 # Node.js with pnpm and Next.js
 FROM node:20-alpine
 
+# OCI standard labels for image metadata
+LABEL org.opencontainers.image.source="https://github.com/DebaA17/PORTFOLIO"
+LABEL org.opencontainers.image.description="Personal portfolio website container image"
+LABEL org.opencontainers.image.licenses="MIT"
+
 # Set working directory
 WORKDIR /app
 
