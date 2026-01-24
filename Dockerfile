@@ -1,39 +1,39 @@
-# Node.js with pnpm and Next.js
-FROM node:20-alpine
+# ---- Build Stage ----
+FROM node:20-alpine AS builder
 
-# OCI standard labels for image metadata
+WORKDIR /app
+
+RUN npm install -g pnpm
+
+COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* ./
+RUN pnpm install --frozen-lockfile \
+    && pnpm exec next telemetry disable
+
+COPY . .
+RUN pnpm build
+
+# ---- Production Stage ----
+FROM node:20-alpine AS runner
+
+# OCI labels (belong in final image)
 LABEL org.opencontainers.image.source="https://github.com/DebaA17/PORTFOLIO"
 LABEL org.opencontainers.image.description="Personal portfolio website container image"
 LABEL org.opencontainers.image.licenses="MIT"
 
-# Set working directory
 WORKDIR /app
+ENV NODE_ENV=production
 
-# Install pnpm
-RUN npm install -g pnpm
+# Copy only required runtime files
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/next.config.mjs ./
+COPY --from=builder /app/node_modules ./node_modules
 
-# Copy only package files first for better caching
-COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* ./
-
-
-# Install dependencies
-RUN pnpm install --frozen-lockfile \
-	&& pnpm exec next telemetry disable
-
-# Copy the rest of the app
-COPY . .
-
-# Build the Next.js app
-RUN pnpm build
-
-
-# Create a non-root user and switch to it
-RUN adduser -D appuser \
-	&& chown -R appuser /app
+# Non-root user
+RUN adduser -D appuser && chown -R appuser /app
 USER appuser
 
-# Expose port (default Next.js port)
 EXPOSE 3000
 
-# Start the app
-CMD ["pnpm", "start"]
+CMD ["node_modules/.bin/next", "start", "-p", "3000"]
