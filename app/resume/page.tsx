@@ -14,7 +14,7 @@ const PDF_PATH = "/Debasis_Biswas_Resume.pdf"
 
 const PDF_VIEWER_FRAGMENT = "#view=FitH&toolbar=0&navpanes=0&scrollbar=0"
 
-const PDF_SHA256 = "4459ae5bb37e5f29ee19d159216ec0b81cfd0c21bbee234e6cedfac3b653892c"
+const PDF_SHA256 = "ef933e8f1867c56f57fb04e9391fbf6f26e178f33f1e12cc5238ad62a02916f5"
 
 export default function ResumePage() {
   return (
