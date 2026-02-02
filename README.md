@@ -33,6 +33,14 @@ Welcome to the PORTFOLIO project! This is a modern, responsive portfolio built w
 
 You can run this portfolio locally in a container using Docker or Podman.
 
+### Run the prebuilt image (Recommended • no build needed)
+
+If you just want to run the latest image from GitHub Container Registry:
+
+```sh
+docker run --rm -p 3000:3000 ghcr.io/debaa17/portfolio:main
+```
+
 ### Build the image
 ```sh
 # With Docker:
