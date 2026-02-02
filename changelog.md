@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.6.0...my-portfolio-v0.7.0) (2026-02-02)
+
+
+### Features
+
+* add OCI standard labels and update Docker build action in workflow ([01a4aef](https://github.com/DebaA17/PORTFOLIO/commit/01a4aefc10a06da2aa2e4678afaf0110e2145675))
+
 ## [0.6.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.5.1...my-portfolio-v0.6.0) (2026-01-24)
 
 
