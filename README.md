@@ -4,7 +4,7 @@
 
 
 
-Welcome to the PORTFOLIO project! This is a modern, responsive portfolio built with Next.js and Tailwind CSS, designed to showcase your skills, projects, and contact information in a clean and professional manner.
+Welcome to the PORTFOLIO project! This is a modern, responsive portfolio built with Next.js and Tailwind CSS, designed to showcase my skills, projects, and contact information in a clean and professional manner.
 
 ## Features
 

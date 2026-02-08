@@ -21,7 +21,7 @@ behavior: "smooth",
 
 // Initialize typewriter effect with improved speed
 useEffect(() => {
-const roles = ["Cybersecurity Enthusiast", "Network Engineering", "Linux Troubleshooter"]
+const roles = ["Cybersecurity Enthusiast", "Cloud Security Enthusiast", "Linux Troubleshooter"]
 
 let roleIndex = 0
 let charIndex = 0
