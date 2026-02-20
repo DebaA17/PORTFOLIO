@@ -20,6 +20,13 @@ const certifications = [
     date: "2025-04-21",
   },
   {
+    title: "Network Support and Security",
+    image: "/certifications/Network_Support_and_Security.png",
+    verifyUrl: "https://www.credly.com/badges/1a2a36f7-ba73-49b2-859c-a543f8725c2b",
+    issuer: "Cisco Networking Academy",
+    date: "2026-02-20",
+  },
+  {
     title: "SQL Injection",
     image: "/certifications/SQL injection.png",
     verifyUrl: "https://learn.eccouncil.org/certificate/3c62091f-76ad-47d0-8529-ac539540267a?logged=false",
