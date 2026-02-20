@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.6.0...my-portfolio-v0.7.0) (2026-02-20)
+
+
+### Features
+
+* add new certification for Network Support and Security and update project exclusions ([fff68f9](https://github.com/DebaA17/PORTFOLIO/commit/fff68f99df9d0510f2e22b853fad83a3dc5e8bff))
+
 ## [0.6.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.5.1...my-portfolio-v0.6.0) (2026-01-24)
 
 
