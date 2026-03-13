@@ -2,14 +2,37 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { Mail, Github, Linkedin, Send, CheckCircle } from "lucide-react"
+import Script from "next/script"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
+
+type TurnstileApi = {
+  render: (
+    container: HTMLElement,
+    options: {
+      sitekey: string
+      theme?: "light" | "dark" | "auto"
+      callback: (token: string) => void
+      "expired-callback"?: () => void
+      "error-callback"?: () => void
+    },
+  ) => string
+  reset: (widgetId?: string) => void
+}
+
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi
+  }
+}
+
+const TURNSTILE_SITE_KEY = "0x4AAAAAACp9k1gSv25NYbw7"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -20,7 +43,30 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [turnstileToken, setTurnstileToken] = useState("")
   const { toast } = useToast()
+  const turnstileContainerRef = useRef<HTMLDivElement | null>(null)
+  const turnstileWidgetIdRef = useRef<string | null>(null)
+
+  const renderTurnstileWidget = () => {
+    if (!window.turnstile || !turnstileContainerRef.current || turnstileWidgetIdRef.current) {
+      return
+    }
+
+    turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
+      sitekey: TURNSTILE_SITE_KEY,
+      theme: "dark",
+      callback: (token: string) => setTurnstileToken(token),
+      "expired-callback": () => setTurnstileToken(""),
+      "error-callback": () => setTurnstileToken(""),
+    })
+  }
+
+  useEffect(() => {
+    if (window.turnstile) {
+      renderTurnstileWidget()
+    }
+  }, [])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -36,6 +82,14 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!turnstileToken) {
+      toast({
+        title: "Verification required",
+        description: "Please complete the Turnstile verification before sending.",
+        variant: "destructive",
+      })
+      return
+    }
     setIsSubmitting(true);
     setSubmitSuccess(false);
     try {
@@ -44,7 +98,7 @@ export default function Contact() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, turnstileToken }),
       });
       if (response.ok) {
         toast({
@@ -52,6 +106,10 @@ export default function Contact() {
           description: "Thank you for reaching out. I'll get back to you soon.",
         });
         setFormData({ name: "", email: "", subject: "", message: "" });
+        setTurnstileToken("")
+        if (window.turnstile && turnstileWidgetIdRef.current) {
+          window.turnstile.reset(turnstileWidgetIdRef.current)
+        }
         setSubmitSuccess(true);
       } else {
         throw new Error("Failed to send message");
@@ -93,6 +151,11 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-20 bg-[#0c0c1a]">
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+        strategy="afterInteractive"
+        onLoad={renderTurnstileWidget}
+      />
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -266,9 +329,14 @@ export default function Contact() {
                       />
                     </div>
 
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Human Verification *</label>
+                      <div ref={turnstileContainerRef} className="min-h-[65px]" />
+                    </div>
+
                     <Button
                       type="submit"
-                      disabled={isSubmitting}
+                      disabled={isSubmitting || !turnstileToken}
                       className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                     >
                       {isSubmitting ? (

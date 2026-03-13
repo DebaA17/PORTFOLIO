@@ -1,6 +1,11 @@
 import { type NextRequest, NextResponse } from "next/server"
 import sanitizeHtml from "sanitize-html";
 
+type TurnstileVerifyResponse = {
+  success: boolean
+  "error-codes"?: string[]
+}
+
 // Rate limiting store (in production, use Redis or database)
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>()
 
@@ -54,6 +59,36 @@ function isRateLimited(ip: string): boolean {
 
 function sanitizeInput(input: string): string {
   return sanitizeHtml(input, { allowedTags: [], allowedAttributes: {} }).trim();
+}
+
+async function verifyTurnstileToken(token: string, clientIP: string): Promise<TurnstileVerifyResponse> {
+  const secret = process.env.TURNSTILE_SECRET_KEY
+
+  if (!secret) {
+    console.error("TURNSTILE_SECRET_KEY is not configured")
+    return { success: false, "error-codes": ["missing-input-secret"] }
+  }
+
+  const formData = new URLSearchParams()
+  formData.append("secret", secret)
+  formData.append("response", token)
+  if (clientIP && clientIP !== "unknown") {
+    formData.append("remoteip", clientIP)
+  }
+
+  const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: formData.toString(),
+  })
+
+  if (!response.ok) {
+    return { success: false, "error-codes": ["turnstile-verification-failed"] }
+  }
+
+  return (await response.json()) as TurnstileVerifyResponse
 }
 
 function detectSpam(data: any): boolean {
@@ -142,6 +177,19 @@ export async function POST(request: NextRequest) {
     if (!body.name || !body.email || !body.message) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
+    if (!body.turnstileToken || typeof body.turnstileToken !== "string") {
+      return NextResponse.json({ error: "Missing Turnstile token" }, { status: 400 })
+    }
+
+    const turnstileResult = await verifyTurnstileToken(body.turnstileToken, clientIP)
+    if (!turnstileResult.success) {
+      console.warn("Turnstile verification failed", {
+        ip: clientIP,
+        errors: turnstileResult["error-codes"],
+      })
+      return NextResponse.json({ error: "Human verification failed" }, { status: 400 })
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(body.email)) {
       return NextResponse.json({ error: "Invalid email format" }, { status: 400 });
