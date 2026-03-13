@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.7.0...my-portfolio-v0.8.0) (2026-03-13)
+
+
+### Features
+
+* integrated Turnstile verification for contact form submissions ([ca7cbed](https://github.com/DebaA17/PORTFOLIO/commit/ca7cbed90d7c15e1c02691eb951e80f34ea00277))
+
+
+### Bug Fixes
+
+* update Content Security Policy to include Cloudflare challenges ([2d3c36d](https://github.com/DebaA17/PORTFOLIO/commit/2d3c36d0c1cb09e25e75c4814a9f596ab369f73d))
+
 ## [0.7.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.6.0...my-portfolio-v0.7.0) (2026-02-20)
 
 
