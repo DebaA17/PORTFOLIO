@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.1](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.8.0...my-portfolio-v0.8.1) (2026-03-20)
+
+
+### Bug Fixes
+
+* **security:** patch CVE-2026-27980, CVE-2026-27979, CVE-2026-29057, CVE-2026-27978, CVE-2026-27977 ([358512e](https://github.com/DebaA17/PORTFOLIO/commit/358512e5e6199b71d9ac4cda97b9956c560dc9c5))
+
 ## [0.8.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.7.0...my-portfolio-v0.8.0) (2026-03-13)
 
 
