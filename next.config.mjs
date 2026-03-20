@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig = {
   // === BUILD SETTINGS ===
   reactStrictMode: true,
@@ -16,6 +18,7 @@ const nextConfig = {
 
   images: {
     formats: ["image/avif", "image/webp"],
+    qualities: [75, 80],
     
     minimumCacheTTL: 60 * 60 * 24,
     remotePatterns: [
@@ -44,6 +47,12 @@ const nextConfig = {
 
   // === HEADERS ===
   async headers() {
+    const cspScriptSrc = [
+      "script-src 'self'",
+      "'unsafe-inline'",
+      ...(isProd ? [] : ["'unsafe-eval'"])
+    ].join(" ");
+
     return [
       {
         source: "/(.*)",
@@ -59,7 +68,7 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://challenges.cloudflare.com",
+              `${cspScriptSrc} https://static.cloudflareinsights.com https://challenges.cloudflare.com`,
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com data:",
               "img-src 'self' data: https: blob:",
@@ -118,23 +127,6 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: "default-src 'none'; frame-ancestors 'self'",
           },
-        ],
-      },
-
-      // Next.js Image Optimization output
-      // Do NOT force "must-revalidate" here, or images will re-fetch/re-optimize often.
-      {
-        source: "/_next/image",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-        ],
-      },
-
-      // Next.js static
-      {
-        source: "/_next/static/(.*)",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
       },
 
