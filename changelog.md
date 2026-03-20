@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.1](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.8.0...my-portfolio-v0.8.1) (2026-03-20)
+
+
+### Bug Fixes
+
+* **security:** patch CVE-2026-27980, CVE-2026-27979, CVE-2026-29057, CVE-2026-27978, CVE-2026-27977 ([4c219e5](https://github.com/DebaA17/PORTFOLIO/commit/4c219e5a1d0a3ecc595cfca18bb84c790edd6731))
+* updated development script to include webpack for better performance ([3715f25](https://github.com/DebaA17/PORTFOLIO/commit/3715f25a94532343bc60d0995df66d387428f5fc))
+
 ## [0.8.0](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.7.0...my-portfolio-v0.8.0) (2026-03-13)
 
 
