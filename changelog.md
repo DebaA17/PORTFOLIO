@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.2](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.8.1...my-portfolio-v0.8.2) (2026-04-05)
+
+
+### Bug Fixes
+
+* updated next to version 16.2.2 and added package overrides for picomatch and yaml ([cb84a8a](https://github.com/DebaA17/PORTFOLIO/commit/cb84a8a95081fa953aa886e0bd8cc5aa2ad8a2fb))
+
 ## [0.8.1](https://github.com/DebaA17/PORTFOLIO/compare/my-portfolio-v0.8.0...my-portfolio-v0.8.1) (2026-03-20)
 
 
