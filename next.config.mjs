@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
+const isDockerBuild = process.env.DOCKER_BUILD === "true";
 
 const nextConfig = {
   // === BUILD SETTINGS ===
   reactStrictMode: true,
   compress: true,
   poweredByHeader: false,
+  ...(isDockerBuild ? { output: "standalone" } : {}),
   
   experimental: {
     optimizePackageImports: ["lucide-react"],
