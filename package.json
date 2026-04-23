@@ -49,12 +49,12 @@
     "gsap": "^3.14.2",
     "input-otp": "latest",
     "lucide-react": "^0.454.0",
-    "next": "16.2.2",
+    "next": "^16.2.4",
     "next-themes": "latest",
-    "react": "^19.2.4",
+    "react": "^19.2.5",
     "react-confetti": "^6.4.0",
     "react-day-picker": "latest",
-    "react-dom": "^19.2.4",
+    "react-dom": "^19.2.5",
     "react-hook-form": "latest",
     "react-intersection-observer": "latest",
     "react-resizable-panels": "latest",
@@ -83,8 +83,9 @@
     "overrides": {
       "picomatch@>=4.0.0 <4.0.4": "4.0.4",
       "yaml@>=2.0.0 <2.8.3": "2.8.3",
-      "next@>=16.0.0-beta.0 <16.2.3": ">=16.2.3"
+      "next@>=16.0.0-beta.0 <16.2.3": ">=16.2.3",
+      "sanitize-html@>=2.17.2 <2.17.3": ">=2.17.3"
     }
   },
-  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319"
+  "packageManager": "pnpm@10.33.1+sha512.05ba3c1d5d1c18f68df06470d74055e62d41fc110a0c660db1b2dfb2785327f04cf0f68345d4609bc52089e7fa0343c31593b2f9594e2c5d5da426230acc9820"
 }
