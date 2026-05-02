@@ -163,13 +163,12 @@ className="px-8 py-3 bg-transparent border border-blue-500 text-blue-500 rounded
 Get In Touch
 </button>
 <a
-href="https://hello.debasisbiswas.me"
-target="_blank"
-rel="noopener noreferrer"
-className="px-8 py-3 bg-green-600 text-white rounded-md hover-lift hover-glow transition-all flex items-center gap-2 group hacker-button"
+		href="/Debasis_Biswas_Resume.pdf"
+		download
+		className="px-8 py-3 bg-green-600 text-white rounded-md hover-lift hover-glow transition-all flex items-center gap-2 group"
 >
-<Terminal size={18} className="group-hover:animate-pulse" />
-<span className="group-hover:glitch-text">Access Server</span>
+		<Terminal size={18} className="group-hover:animate-pulse" />
+		<span>Download Resume</span>
 </a>
 </div>
 </div>
