@@ -1,0 +1,82 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+env:
+  NEXT_TELEMETRY_DISABLED: "1"
+
+jobs:
+  ci:
+    name: CI (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20.x, 22.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.2
+          run_install: false
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - name: Restore Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-nextcache-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('next.config.mjs', 'postcss.config.mjs', 'tailwind.config.ts', 'tsconfig.json', 'app/**', 'components/**', 'hooks/**', 'lib/**') }}
+          restore-keys: |
+            ${{ runner.os }}-nextcache-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}-
+            ${{ runner.os }}-nextcache-${{ matrix.node-version }}-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck (non-blocking)
+        continue-on-error: true
+        run: pnpm exec tsc -p tsconfig.json --noEmit
+
+      - name: Lint (if configured)
+        if: ${{ hashFiles('eslint.config.*', '.eslintrc', '.eslintrc.*') != '' }}
+        run: pnpm run lint
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Test (if present)
+        run: pnpm run --if-present test
+
+      - name: Upload coverage (if present)
+        if: ${{ always() && hashFiles('coverage/**') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-node-${{ matrix.node-version }}
+          path: coverage
+
+      - name: Upload test results (if present)
+        if: ${{ always() && (hashFiles('test-results/**') != '' || hashFiles('junit.xml') != '' || hashFiles('reports/**') != '') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-node-${{ matrix.node-version }}
+          path: |
+            test-results
+            reports
+            junit.xml
