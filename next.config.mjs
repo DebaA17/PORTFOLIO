@@ -26,7 +26,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "debasisbiswas.me",
+        hostname: "debasisbiswas.in",
         pathname: "/**",
       },
       {
@@ -117,7 +117,7 @@ const nextConfig = {
           // Branding
           { key: "Server", value: "Debasis-Security-Server" },
           { key: "X-Author", value: "Debasis Biswas - Cybersecurity Expert" },
-          { key: "X-Security-Contact", value: "forensic@debasisbiswas.me" },
+          { key: "X-Security-Contact", value: "security@debasisbiswas.in" },
         ],
       },
 
@@ -163,15 +163,15 @@ const nextConfig = {
         has: [
           { type: "header", key: "x-forwarded-proto", value: "http" },
         ],
-        destination: "https://debasisbiswas.me/:path*",
+        destination: "https://debasisbiswas.in/:path*",
         permanent: true,
       },
       {
         source: "/:path*",
         has: [
-          { type: "host", value: "www.debasisbiswas.me" },
+          { type: "host", value: "www.debasisbiswas.in" },
         ],
-        destination: "https://debasisbiswas.me/:path*",
+        destination: "https://debasisbiswas.in/:path*",
         permanent: true,
       },
     ];

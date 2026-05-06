@@ -1,14 +1,15 @@
-# security.txt for debasisbiswas.me
+# security.txt for debasisbiswas.in
 
 
-Contact: mailto:forensic@debasisbiswas.me
+Contact: mailto:security@debasisbiswas.in
 Contact: https://github.com/DebaA17/PORTFOLIO/security/advisories/new
 Preferred-Languages: en
-Canonical: https://debasisbiswas.me/.well-known/security.txt
-Policy: https://debasisbiswas.me/security/reporting
+Canonical: https://debasisbiswas.in/.well-known/security.txt
+Policy: https://debasisbiswas.in/security/reporting
 
 # Encrypt sensitive reports (PGP public key)
-Encryption: https://debasisbiswas.me/pgp.asc
+Encryption: https://debasisbiswas.in/pgp.asc
+
 
 # PGP public key (ASCII-armored) - same as /pgp.asc
 -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -64,5 +65,6 @@ Nw==
 =LASb
 -----END PGP PUBLIC KEY BLOCK-----
 
-Expires: 2026-05-01T00:00:00Z
+Expires: 2026-11-01T00:00:00Z
+
 

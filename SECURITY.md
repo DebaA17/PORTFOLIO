@@ -1,6 +1,6 @@
 # Security Policy
 
-Thank you for taking the time to help make debasisiswas.me more secure.
+Thank you for taking the time to help make debasisbiswas.in more secure.
 
 ## Supported Versions
 
@@ -12,10 +12,10 @@ This portfolio site is a personal project. While it is not actively maintained a
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability affecting **debasisiswas.me**, please follow these steps:
+If you discover a security vulnerability affecting **debasisbiswas.in**, please follow these steps:
 
 1. **Do not** create a public issue or pull request.
-2. Report it privately by emailing: **forensic@debasisbiswas.me**
+2. Report it privately by emailing: **security@debasisbiswas.in**
 3. Include relevant details such as:
    - Description of the issue
    - Steps to reproduce (if applicable)
@@ -29,7 +29,7 @@ Please follow responsible disclosure practices. Allow me time to investigate and
 
 ## Scope
 
-This policy applies only to the code and content hosted on **[debasisiswas.me](https://debasisiswas.me)** and the associated GitHub repository. Vulnerabilities in third-party packages or dependencies should be reported to their respective maintainers.
+This policy applies only to the code and content hosted on **[debasisbiswas.in](https://debasisbiswas.in)** and the associated GitHub repository. Vulnerabilities in third-party packages or dependencies should be reported to their respective maintainers.
 
 ## Thank You
 

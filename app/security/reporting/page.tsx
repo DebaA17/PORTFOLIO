@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Security Reporting | Debasis Biswas",
   description:
-    "Responsible disclosure and secure vulnerability reporting for debasisbiswas.me (PGP key included).",
+    "Responsible disclosure and secure vulnerability reporting for debasisbiswas.in (PGP key included).",
 }
 
 export default function SecurityReportingPage() {
@@ -22,8 +22,8 @@ export default function SecurityReportingPage() {
           <ul className="mt-3 list-disc space-y-2 pl-6">
             <li>
               Email: {" "}
-              <a className="text-[#00ffee] hover:underline" href="mailto:forensic@debasisbiswas.me">
-                forensic@debasisbiswas.me
+              <a className="text-[#00ffee] hover:underline" href="mailto:security@debasisbiswas.in">
+                security@debasisbiswas.in
               </a>
             </li>
             <li>

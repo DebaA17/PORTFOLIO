@@ -5,7 +5,7 @@ export async function GET() {
 Allow: /
 
 # Sitemap
-Sitemap: https://debasisbiswas.me/sitemap.xml
+Sitemap: https://debasisbiswas.in/sitemap.xml
 
 # Security
 User-agent: *

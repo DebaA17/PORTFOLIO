@@ -14,7 +14,7 @@ const siteUrl =
   (process.env.NETLIFY === "true"
     ? (process.env.URL || process.env.DEPLOY_PRIME_URL || process.env.DEPLOY_URL)
     : undefined) ||
-  "https://debasisbiswas.me"
+  "https://debasisbiswas.in"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Debasis Biswas - Cybersecurity Enthusiast",
     description:
       "Portfolio of Debasis Biswas - BCA Student, Cybersecurity Enthusiast, Network Engineering, and Linux Troubleshooter",
-    url: "https://debasisbiswas.me",
+    url: "https://debasisbiswas.in",
     siteName: "Debasis Biswas Portfolio",
     images: [
       {
@@ -78,7 +78,7 @@ export default function RootLayout({
         <meta property="og:title" content="Debasis Biswas - Cybersecurity Enthusiast" />
         <meta property="og:description" content="Portfolio of Debasis Biswas - BCA Student, Cybersecurity Enthusiast, Network Engineering, and Linux Troubleshooter" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://debasisbiswas.me" />
+        <meta property="og:url" content="https://debasisbiswas.in" />
         <meta property="og:site_name" content="Debasis Biswas Portfolio" />
         <meta property="og:image" content="/DEBASIS.jpg" />
         <meta property="og:image:width" content="1200" />
@@ -88,7 +88,7 @@ export default function RootLayout({
         <meta name="twitter:title" content="Debasis Biswas - Cybersecurity Enthusiast" />
         <meta name="twitter:description" content="Portfolio of Debasis Biswas - BCA Student, Cybersecurity Enthusiast, Network Engineering, and Linux Troubleshooter" />
         <meta name="twitter:image" content="/DEBASIS.jpg" />
-        <link rel="canonical" href="https://debasisbiswas.me" />
+        <link rel="canonical" href="https://debasisbiswas.in" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />

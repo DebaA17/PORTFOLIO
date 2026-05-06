@@ -131,7 +131,7 @@ async function sendToTelegram(data: any): Promise<TelegramSendResult> {
     "Message:",
     `${data.message}`,
     "",
-    "Website: debasisbiswas.me",
+    "Website: debasisbiswas.in",
     `Time: ${new Date().toLocaleString()}`,
   ].join("\n")
 
