@@ -146,7 +146,7 @@ className="px-8 py-3 bg-blue-600 text-white rounded-md hover-lift hover-glow tra
 Learn About Me
 </button>
 <a
-href="https://blog.debasisbiswas.me"
+href="https://blog.debasisbiswas.in"
 target="_blank"
 rel="noopener noreferrer"
 className="px-8 py-3 bg-purple-600 text-white rounded-md hover-lift hover-glow transition-all flex items-center gap-2 group"
