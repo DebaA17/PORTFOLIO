@@ -129,8 +129,8 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "contact@debasisbiswas.me",
-      href: "mailto:contact@debasisbiswas.me",
+      value: "contact@debasisbiswas.in",
+      href: "mailto:contact@debasisbiswas.in",
     },
   ]
 
@@ -293,7 +293,7 @@ export default function Contact() {
                           value={formData.email}
                           onChange={handleInputChange}
                           className="bg-[#0a0a14] border-gray-700 focus:border-blue-500"
-                          placeholder="contact@debasisbiswas.me"
+                          placeholder="contact@debasisbiswas.in"
                         />
                       </div>
                     </div>
