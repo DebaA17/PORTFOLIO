@@ -1,2 +1,8 @@
+allowBuilds:
+  sharp: false
 ignoredBuiltDependencies:
   - sharp
+minimumReleaseAgeExclude:
+  - postcss@8.5.10
+overrides:
+  postcss@<8.5.10: ^8.5.10
