@@ -4,5 +4,7 @@ ignoredBuiltDependencies:
   - sharp
 minimumReleaseAgeExclude:
   - postcss@8.5.10
+  - sanitize-html@2.17.4
 overrides:
   postcss@<8.5.10: ^8.5.10
+  sanitize-html@<=2.17.3: ^2.17.4
