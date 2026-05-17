@@ -12,11 +12,14 @@ export default function Footer() {
               className="inline-flex items-center px-4 py-2 rounded-lg bg-yellow-400 text-black font-semibold shadow hover:bg-yellow-300 transition-colors border border-black text-base sm:text-sm"
               style={{ fontFamily: 'Comic Sans MS, Comic Sans, cursive' }}
             >
-              <span className="mr-2" role="img" aria-label="coffee">☕</span>
+              <span className="mr-2" role="img" aria-label="coffee">
+                ☕
+              </span>
               Buy me a coffee
             </a>
             <p className="text-gray-400 text-center sm:text-left text-sm">
-              © {new Date().getFullYear()} <span className="text-blue-500">Debasis Biswas</span>. All rights reserved.
+              © {new Date().getFullYear()} <span className="text-blue-500">Debasis Biswas</span>.
+              All rights reserved.
             </p>
           </div>
           {/* Right section: Social/Privacy links */}
@@ -30,9 +33,9 @@ export default function Footer() {
                 Download PGP public key
               </a>
               <span className="text-gray-400 text-xs mt-1">
-                Fingerprint:{" "}
+                Fingerprint:{' '}
                 <span className="font-mono font-semibold text-gray-200 break-all">
-                  B521 D109 5C63 E077 EAE8  54E9 6805 708F 78A1 9272
+                  B521 D109 5C63 E077 EAE8 54E9 6805 708F 78A1 9272
                 </span>
               </span>
             </div>
@@ -53,18 +56,27 @@ export default function Footer() {
             >
               LinkedIn
             </a>
-            <a href="mailto:contact@debasisbiswas.in" className="text-gray-400 hover:text-blue-500 transition-colors text-base sm:text-sm">
+            <a
+              href="mailto:contact@debasisbiswas.in"
+              className="text-gray-400 hover:text-blue-500 transition-colors text-base sm:text-sm"
+            >
               Email
             </a>
-            <a href="/privacy-policy" className="text-gray-400 hover:text-blue-500 transition-colors text-base sm:text-sm">
+            <a
+              href="/privacy-policy"
+              className="text-gray-400 hover:text-blue-500 transition-colors text-base sm:text-sm"
+            >
               Privacy Policy
             </a>
-            <a href="/terms" className="text-gray-400 hover:text-blue-500 transition-colors text-base sm:text-sm">
+            <a
+              href="/terms"
+              className="text-gray-400 hover:text-blue-500 transition-colors text-base sm:text-sm"
+            >
               Terms &amp; Conditions
             </a>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

@@ -1,20 +1,20 @@
-export const dynamic = "force-static"
+export const dynamic = 'force-static';
 
-import type { Metadata } from "next"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
-  title: "Resume | Debasis Biswas",
-  description: "Resume PDF preview for Debasis Biswas.",
+  title: 'Resume | Debasis Biswas',
+  description: 'Resume PDF preview for Debasis Biswas.',
   robots: { index: true, follow: true },
-}
+};
 
-const PDF_PATH = "/Debasis_Biswas_Resume.pdf"
+const PDF_PATH = '/Debasis_Biswas_Resume.pdf';
 
-const PDF_VIEWER_FRAGMENT = "#view=FitH&toolbar=0&navpanes=0&scrollbar=0"
+const PDF_VIEWER_FRAGMENT = '#view=FitH&toolbar=0&navpanes=0&scrollbar=0';
 
-const PDF_SHA256 = "d85fc1228e519554db4b718f16aff3730a87a09188beeb66900a371f08fc08f3"
+const PDF_SHA256 = 'd85fc1228e519554db4b718f16aff3730a87a09188beeb66900a371f08fc08f3';
 
 export default function ResumePage() {
   return (
@@ -52,7 +52,9 @@ export default function ResumePage() {
 
         <div className="mt-4 rounded-lg border bg-card p-3">
           <p className="text-sm font-medium text-muted-foreground md:text-base">SHA-256</p>
-          <p className="mt-2 break-all font-mono text-sm font-semibold text-foreground md:text-base">{PDF_SHA256}</p>
+          <p className="mt-2 break-all font-mono text-sm font-semibold text-foreground md:text-base">
+            {PDF_SHA256}
+          </p>
         </div>
 
         <p className="mt-4 text-sm text-muted-foreground md:text-base">
@@ -60,5 +62,5 @@ export default function ResumePage() {
         </p>
       </div>
     </main>
-  )
+  );
 }

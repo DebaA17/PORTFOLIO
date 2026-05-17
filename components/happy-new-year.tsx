@@ -1,6 +1,6 @@
-"use client"
-import React, { useEffect, useState } from "react";
-import Confetti from "react-confetti";
+'use client';
+import React, { useEffect, useState } from 'react';
+import Confetti from 'react-confetti';
 
 export default function HappyNewYear() {
   const [show, setShow] = useState(true);
@@ -18,14 +18,14 @@ export default function HappyNewYear() {
       setDimensions({ width: window.innerWidth, height: window.innerHeight });
     }
     updateSize();
-    window.addEventListener("resize", updateSize);
+    window.addEventListener('resize', updateSize);
 
     setYear(new Date().getFullYear());
 
     return () => {
       clearTimeout(hideTimer);
       clearTimeout(outTimer);
-      window.removeEventListener("resize", updateSize);
+      window.removeEventListener('resize', updateSize);
     };
   }, []);
 
@@ -39,21 +39,21 @@ export default function HappyNewYear() {
   return (
     <div
       style={{
-        position: "fixed",
+        position: 'fixed',
         top: 0,
         left: 0,
-        width: "100vw",
-        height: "100vh",
-        background: "rgba(0,0,0,0.7)",
+        width: '100vw',
+        height: '100vh',
+        background: 'rgba(0,0,0,0.7)',
         zIndex: 9999,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        color: "#fff",
-        fontSize: "2.5rem",
-        fontWeight: "bold",
-        animation: "fadeIn 1s"
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        color: '#fff',
+        fontSize: '2.5rem',
+        fontWeight: 'bold',
+        animation: 'fadeIn 1s',
       }}
       suppressHydrationWarning={true}
     >
@@ -66,17 +66,17 @@ export default function HappyNewYear() {
         recycle={false}
         run={show}
       />
-      <span role="img" aria-label="party popper" style={{ fontSize: "4rem", animation: "drop 1s" }}>
+      <span role="img" aria-label="party popper" style={{ fontSize: '4rem', animation: 'drop 1s' }}>
         🎉
       </span>
       <div
         style={{
-          margin: "1rem 0",
-          animation: animateOut ? "dropOut 0.8s forwards" : "drop 1.2s",
-          filter: animateOut ? "blur(8px)" : undefined,
+          margin: '1rem 0',
+          animation: animateOut ? 'dropOut 0.8s forwards' : 'drop 1.2s',
+          filter: animateOut ? 'blur(8px)' : undefined,
         }}
       >
-        Happy New Year{year ? ` ${year}` : ""}!
+        Happy New Year{year ? ` ${year}` : ''}!
       </div>
       <style>{`
         @keyframes fadeIn {

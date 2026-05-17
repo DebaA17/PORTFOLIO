@@ -1,28 +1,28 @@
-"use client"
+'use client';
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react';
 
 interface TerminalProps {
-  onComplete: () => void
+  onComplete: () => void;
 }
 
 export default function Terminal({ onComplete }: TerminalProps) {
-  const [text, setText] = useState("")
-  const fullText = `> Initializing system...\n> Loading portfolio assets...\n> Establishing secure connection...\n> Welcome to Debasis Biswas's portfolio\n> Starting interface...`
+  const [text, setText] = useState('');
+  const fullText = `> Initializing system...\n> Loading portfolio assets...\n> Establishing secure connection...\n> Welcome to Debasis Biswas's portfolio\n> Starting interface...`;
 
   useEffect(() => {
-    let i = 0
+    let i = 0;
     const typing = setInterval(() => {
-      setText(fullText.substring(0, i))
-      i++
+      setText(fullText.substring(0, i));
+      i++;
       if (i > fullText.length) {
-        clearInterval(typing)
-        setTimeout(onComplete, 1000)
+        clearInterval(typing);
+        setTimeout(onComplete, 1000);
       }
-    }, 50)
+    }, 50);
 
-    return () => clearInterval(typing)
-  }, [fullText, onComplete])
+    return () => clearInterval(typing);
+  }, [fullText, onComplete]);
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
@@ -41,5 +41,5 @@ export default function Terminal({ onComplete }: TerminalProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,33 +1,54 @@
-"use client";
+'use client';
 
-const projectBg = "/add-project-bg.jpg";
+const projectBg = '/add-project-bg.jpg';
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { Github, ExternalLink } from "lucide-react"
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { Github, ExternalLink } from 'lucide-react';
+
+type Repo = {
+  id: number;
+  name: string;
+  description?: string | null;
+  owner?: { avatar_url?: string } | null;
+  html_url: string;
+  homepage?: string | null;
+  language?: string | null;
+};
 
 export default function Projects() {
-  const [repos, setRepos] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState("")
+  const [repos, setRepos] = useState<Repo[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch("https://api.github.com/users/DebaA17/repos?sort=updated")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch repositories")
-        return res.json()
+    fetch('https://api.github.com/users/DebaA17/repos?sort=updated')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch repositories');
+        return res.json();
       })
-      .then((data) => {
-  const excluded = ["DebaA17", "chat-portfolio", "inventory_Hub", "PYTHON_LAB", "golang-learning", "DemoLoginPage", "llm-chat-app-template", "DSA_LAB", "pacguard", "DBMS-LAB"];
-  setRepos(data.filter((repo: any) => !excluded.includes(repo.name)))
-        setLoading(false)
+      .then(data => {
+        const excluded = [
+          'DebaA17',
+          'chat-portfolio',
+          'inventory_Hub',
+          'PYTHON_LAB',
+          'golang-learning',
+          'DemoLoginPage',
+          'llm-chat-app-template',
+          'DSA_LAB',
+          'pacguard',
+          'DBMS-LAB',
+        ];
+        setRepos((data as Repo[]).filter(repo => !excluded.includes(repo.name)));
+        setLoading(false);
       })
-      .catch((err) => {
-        setError(err.message)
-        setLoading(false)
-      })
-  }, [])
+      .catch(err => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <section id="portfolio" className="py-20 bg-[#0a0a14]">
@@ -68,7 +89,7 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-black/40" />
                   <div className="relative z-10">
                     <Image
-                      src={repo.owner?.avatar_url || "/placeholder.svg"}
+                      src={repo.owner?.avatar_url || '/placeholder.svg'}
                       alt={repo.name}
                       width={96}
                       height={96}
@@ -78,8 +99,12 @@ export default function Projects() {
                   </div>
                 </div>
                 <div className="p-4 sm:p-6 flex flex-col flex-1">
-                  <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-white truncate">{repo.name}</h3>
-                  <p className="text-gray-300 text-sm sm:text-base mb-2 flex-1 line-clamp-3">{repo.description || "No description provided."}</p>
+                  <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-white truncate">
+                    {repo.name}
+                  </h3>
+                  <p className="text-gray-300 text-sm sm:text-base mb-2 flex-1 line-clamp-3">
+                    {repo.description || 'No description provided.'}
+                  </p>
                   <div className="flex flex-wrap gap-2 mb-3">
                     {repo.language && (
                       <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full">

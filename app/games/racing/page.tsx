@@ -1,6 +1,6 @@
-"use client";
+'use client';
 export const dynamic = 'force-static';
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 600;
@@ -9,7 +9,6 @@ const CAR_HEIGHT = 120;
 const OBSTACLE_WIDTH = 60;
 const OBSTACLE_HEIGHT = 120;
 const OBSTACLE_SPEED = 6;
-const CAR_SPEED = 10;
 
 function getRandomLane() {
   // 3 lanes
@@ -23,9 +22,7 @@ function getRandomLane() {
 
 export default function RacingGame() {
   const [carX, setCarX] = useState(GAME_WIDTH / 2 - CAR_WIDTH / 2);
-  const [obstacles, setObstacles] = useState([
-    { x: getRandomLane(), y: -OBSTACLE_HEIGHT },
-  ]);
+  const [obstacles, setObstacles] = useState([{ x: getRandomLane(), y: -OBSTACLE_HEIGHT }]);
   const [score, setScore] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [gameOver, setGameOver] = useState(false);
@@ -41,29 +38,29 @@ export default function RacingGame() {
   useEffect(() => {
     if (!playing) return;
     function handleKey(e: KeyboardEvent) {
-      if (e.key === "ArrowLeft" || e.key === "a") {
-        setCarX((x) => Math.max(0, x - GAME_WIDTH / 3));
-      } else if (e.key === "ArrowRight" || e.key === "d") {
-        setCarX((x) => Math.min(GAME_WIDTH - CAR_WIDTH, x + GAME_WIDTH / 3));
+      if (e.key === 'ArrowLeft' || e.key === 'a') {
+        setCarX(x => Math.max(0, x - GAME_WIDTH / 3));
+      } else if (e.key === 'ArrowRight' || e.key === 'd') {
+        setCarX(x => Math.min(GAME_WIDTH - CAR_WIDTH, x + GAME_WIDTH / 3));
       }
     }
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
   }, [playing]);
 
   useEffect(() => {
     if (!playing) return;
     function loop() {
-      setObstacles((obs) => {
-        let newObs = obs.map((o) => ({ ...o, y: o.y + OBSTACLE_SPEED }));
+      setObstacles(obs => {
+        let newObs = obs.map(o => ({ ...o, y: o.y + OBSTACLE_SPEED }));
         // Add new obstacle if needed
         if (newObs[newObs.length - 1].y > 200) {
           newObs.push({ x: getRandomLane(), y: -OBSTACLE_HEIGHT });
         }
-        newObs = newObs.filter((o) => o.y < GAME_HEIGHT);
+        newObs = newObs.filter(o => o.y < GAME_HEIGHT);
         return newObs;
       });
-      setScore((s) => s + 1);
+      setScore(s => s + 1);
       animationRef.current = requestAnimationFrame(loop);
     }
     animationRef.current = requestAnimationFrame(loop);
@@ -97,14 +94,16 @@ export default function RacingGame() {
   return (
     <div className="flex flex-col items-center p-8">
       <h2 className="text-3xl font-extrabold mb-4 text-green-700">Car Racing Game</h2>
-      <div className="mb-4 text-lg text-gray-700">Score: <span className="font-bold">{score}</span></div>
+      <div className="mb-4 text-lg text-gray-700">
+        Score: <span className="font-bold">{score}</span>
+      </div>
       <div
         ref={gameRef}
         className="relative bg-gray-900 border-4 border-green-400 rounded-lg mb-6 overflow-hidden"
         style={{ width: GAME_WIDTH, height: GAME_HEIGHT }}
       >
         {/* Road lines */}
-        {[1, 2].map((i) => (
+        {[1, 2].map(i => (
           <div
             key={i}
             className="absolute bg-white opacity-30"
@@ -173,11 +172,15 @@ export default function RacingGame() {
             >
               Fullscreen
             </button>
-            <div className="mt-4 text-white text-lg">Use <b>←/→</b> or <b>A/D</b> to move</div>
+            <div className="mt-4 text-white text-lg">
+              Use <b>←/→</b> or <b>A/D</b> to move
+            </div>
           </div>
         )}
       </div>
-      <p className="text-gray-500 mt-2">Dodge the cars, survive as long as you can, and try fullscreen for a real racing feel!</p>
+      <p className="text-gray-500 mt-2">
+        Dodge the cars, survive as long as you can, and try fullscreen for a real racing feel!
+      </p>
     </div>
   );
 }

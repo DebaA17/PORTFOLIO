@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 
 const SplashCursorClientOnly = dynamic(() => import('./SplashCursor'), {
   ssr: false,
   loading: () => null,
-})
+});
 
-export default SplashCursorClientOnly
+export default SplashCursorClientOnly;

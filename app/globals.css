@@ -76,8 +76,6 @@
   background: #2563eb;
 }
 
-
-
 /* Profile Image Styles */
 .profile-image-container {
   position: relative;
@@ -304,13 +302,18 @@
 }
 
 .hacker-button::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(to bottom right, rgba(0, 255, 0, 0) 0%, rgba(0, 255, 0, 0.1) 50%, rgba(0, 255, 0, 0) 100%);
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 255, 0, 0) 0%,
+    rgba(0, 255, 0, 0.1) 50%,
+    rgba(0, 255, 0, 0) 100%
+  );
   transform: rotate(45deg);
   opacity: 0;
   transition: opacity 0.3s;
@@ -364,12 +367,16 @@
 
 /* Hover effects */
 .hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .hover-lift:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .hover-glow {
@@ -392,7 +399,9 @@
 .section-transition {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .section-transition.in-view {
@@ -438,7 +447,7 @@ button:hover {
 }
 
 .btn-enhanced::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: -100%;
@@ -519,17 +528,17 @@ button:hover {
 /* Skills Section Mobile Fixes */
 @media (max-width: 768px) {
   /* Increase spacing between tabs and content on mobile */
-  [data-orientation="horizontal"][role="tablist"] {
+  [data-orientation='horizontal'][role='tablist'] {
     margin-bottom: 3rem !important; /* Increased from 2rem (mb-8) to 3rem */
   }
-  
+
   /* Add more top margin to tab content on mobile */
-  [role="tabpanel"] {
+  [role='tabpanel'] {
     margin-top: 1rem !important;
   }
-  
+
   /* Adjust tab trigger padding for better mobile experience */
-  [role="tab"] {
+  [role='tab'] {
     padding: 0.625rem 0.75rem !important; /* Slightly increase padding */
     font-size: 0.875rem !important; /* Ensure readable text size */
   }
@@ -537,12 +546,12 @@ button:hover {
 
 @media (max-width: 640px) {
   /* Further increase spacing on smaller screens */
-  [data-orientation="horizontal"][role="tablist"] {
+  [data-orientation='horizontal'][role='tablist'] {
     margin-bottom: 4rem !important; /* Even more spacing on small screens */
   }
-  
+
   /* Ensure tabs have adequate spacing */
-  [role="tab"] {
+  [role='tab'] {
     padding: 0.75rem 0.5rem !important;
     font-size: 0.8125rem !important;
   }
@@ -562,4 +571,3 @@ button:hover {
     height: 120px;
   }
 }
-

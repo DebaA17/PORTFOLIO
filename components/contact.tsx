@@ -1,124 +1,124 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
-import { Mail, Github, Linkedin, Send, CheckCircle } from "lucide-react"
-import Script from "next/script"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { useToast } from "@/hooks/use-toast"
+import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Mail, Github, Linkedin, Send, CheckCircle } from 'lucide-react';
+import Script from 'next/script';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useToast } from '@/hooks/use-toast';
 
 type TurnstileApi = {
   render: (
     container: HTMLElement,
     options: {
-      sitekey: string
-      theme?: "light" | "dark" | "auto"
-      callback: (token: string) => void
-      "expired-callback"?: () => void
-      "error-callback"?: () => void
-    },
-  ) => string
-  reset: (widgetId?: string) => void
-}
+      sitekey: string;
+      theme?: 'light' | 'dark' | 'auto';
+      callback: (token: string) => void;
+      'expired-callback'?: () => void;
+      'error-callback'?: () => void;
+    }
+  ) => string;
+  reset: (widgetId?: string) => void;
+};
 
 declare global {
   interface Window {
-    turnstile?: TurnstileApi
+    turnstile?: TurnstileApi;
   }
 }
 
-const TURNSTILE_SITE_KEY = "0x4AAAAAACp9k1gSv25NYbw7"
+const TURNSTILE_SITE_KEY = '0x4AAAAAACp9k1gSv25NYbw7';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
-  const [turnstileToken, setTurnstileToken] = useState("")
-  const { toast } = useToast()
-  const turnstileContainerRef = useRef<HTMLDivElement | null>(null)
-  const turnstileWidgetIdRef = useRef<string | null>(null)
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const { toast } = useToast();
+  const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
+  const turnstileWidgetIdRef = useRef<string | null>(null);
 
   const renderTurnstileWidget = () => {
     if (!window.turnstile || !turnstileContainerRef.current || turnstileWidgetIdRef.current) {
-      return
+      return;
     }
 
     turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
       sitekey: TURNSTILE_SITE_KEY,
-      theme: "dark",
+      theme: 'dark',
       callback: (token: string) => setTurnstileToken(token),
-      "expired-callback": () => setTurnstileToken(""),
-      "error-callback": () => setTurnstileToken(""),
-    })
-  }
+      'expired-callback': () => setTurnstileToken(''),
+      'error-callback': () => setTurnstileToken(''),
+    });
+  };
 
   useEffect(() => {
     if (window.turnstile) {
-      renderTurnstileWidget()
+      renderTurnstileWidget();
     }
-  }, [])
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
+    const { name, value } = e.target;
+    setFormData(prev => ({
       ...prev,
       [name]: value,
-    }))
+    }));
     // Reset success state when user starts typing again
     if (submitSuccess) {
-      setSubmitSuccess(false)
+      setSubmitSuccess(false);
     }
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!turnstileToken) {
       toast({
-        title: "Verification required",
-        description: "Please complete the Turnstile verification before sending.",
-        variant: "destructive",
-      })
-      return
+        title: 'Verification required',
+        description: 'Please complete the Turnstile verification before sending.',
+        variant: 'destructive',
+      });
+      return;
     }
     setIsSubmitting(true);
     setSubmitSuccess(false);
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
+      const response = await fetch('/api/contact', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ ...formData, turnstileToken }),
       });
       if (response.ok) {
         toast({
-          title: "Message sent successfully!",
+          title: 'Message sent successfully!',
           description: "Thank you for reaching out. I'll get back to you soon.",
         });
-        setFormData({ name: "", email: "", subject: "", message: "" });
-        setTurnstileToken("")
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTurnstileToken('');
         if (window.turnstile && turnstileWidgetIdRef.current) {
-          window.turnstile.reset(turnstileWidgetIdRef.current)
+          window.turnstile.reset(turnstileWidgetIdRef.current);
         }
         setSubmitSuccess(true);
       } else {
-        throw new Error("Failed to send message");
+        throw new Error('Failed to send message');
       }
     } catch (error) {
       toast({
-        title: "Error sending message",
-        description: "Please try again later or contact me directly via email.",
-        variant: "destructive",
+        title: 'Error sending message',
+        description: 'Please try again later or contact me directly via email.',
+        variant: 'destructive',
       });
     } finally {
       setIsSubmitting(false);
@@ -128,24 +128,24 @@ export default function Contact() {
   const contactInfo = [
     {
       icon: Mail,
-      label: "Email",
-      value: "contact@debasisbiswas.in",
-      href: "mailto:contact@debasisbiswas.in",
+      label: 'Email',
+      value: 'contact@debasisbiswas.in',
+      href: 'mailto:contact@debasisbiswas.in',
     },
-  ]
+  ];
 
   const socialLinks = [
     {
       icon: Github,
-      label: "GitHub",
-      href: "https://github.com/DebaA17",
-      color: "hover:text-gray-400",
+      label: 'GitHub',
+      href: 'https://github.com/DebaA17',
+      color: 'hover:text-gray-400',
     },
     {
       icon: Linkedin,
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/debasis-biswas",
-      color: "hover:text-blue-400",
+      label: 'LinkedIn',
+      href: 'https://linkedin.com/in/debasis-biswas',
+      color: 'hover:text-blue-400',
     },
   ];
 
@@ -163,8 +163,8 @@ export default function Contact() {
           </h2>
           <div className="w-24 h-1 bg-blue-500 mx-auto mb-4"></div>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you. Let's create something amazing
-            together!
+            Have a project in mind or want to collaborate? I'd love to hear from you. Let's create
+            something amazing together!
           </p>
         </div>
 
@@ -179,8 +179,8 @@ export default function Contact() {
             <div>
               <h3 className="text-2xl font-bold mb-6">Let's Connect</h3>
               <p className="text-gray-400 mb-8">
-                I'm always open to discussing new opportunities, interesting projects, or just having a chat about
-                technology and cybersecurity.
+                I'm always open to discussing new opportunities, interesting projects, or just
+                having a chat about technology and cybersecurity.
               </p>
             </div>
 
@@ -200,7 +200,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-medium">{item.label}</p>
-                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors">{item.value}</p>
+                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                      {item.value}
+                    </p>
                   </div>
                 </motion.a>
               ))}
@@ -241,7 +243,9 @@ export default function Contact() {
                   <Send className="w-5 h-5 text-blue-500" />
                   Send Message
                 </CardTitle>
-                <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
+                <CardDescription>
+                  Fill out the form below and I'll get back to you as soon as possible.
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 {submitSuccess ? (
@@ -252,7 +256,9 @@ export default function Contact() {
                     transition={{ duration: 0.3 }}
                   >
                     <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-xl font-bold text-green-400 mb-2">Message Sent Successfully!</h3>
+                    <h3 className="text-xl font-bold text-green-400 mb-2">
+                      Message Sent Successfully!
+                    </h3>
                     <p className="text-gray-300 mb-4">
                       Thank you for reaching out. I'll get back to you as soon as possible.
                     </p>
@@ -359,5 +365,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }

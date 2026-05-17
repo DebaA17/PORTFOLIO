@@ -1,6 +1,5 @@
-
 export const dynamic = 'force-static';
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function GamesPage() {
   return (
@@ -8,9 +7,7 @@ export default function GamesPage() {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <header className="text-center mb-12">
-          <h1 className="text-5xl font-extrabold text-indigo-700 drop-shadow-sm">
-            🎮 Games
-          </h1>
+          <h1 className="text-5xl font-extrabold text-indigo-700 drop-shadow-sm">🎮 Games</h1>
           <p className="mt-4 text-gray-600 text-lg">
             A collection of interactive games built for the web.
           </p>
@@ -21,12 +18,10 @@ export default function GamesPage() {
           {/* Tic Tac Toe */}
           <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col justify-between hover:shadow-xl transition">
             <div>
-              <h2 className="text-3xl font-bold text-blue-700 mb-2">
-                Tic-Tac-Toe
-              </h2>
+              <h2 className="text-3xl font-bold text-blue-700 mb-2">Tic-Tac-Toe</h2>
               <p className="text-gray-600 mb-6">
-                A classic strategy game. Play against a friend and test your logic
-                skills in this clean, responsive version.
+                A classic strategy game. Play against a friend and test your logic skills in this
+                clean, responsive version.
               </p>
             </div>
             <Link href="/games/tic-tac-toe">
@@ -39,12 +34,10 @@ export default function GamesPage() {
           {/* Car Racing */}
           <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col justify-between hover:shadow-xl transition">
             <div>
-              <h2 className="text-3xl font-bold text-green-700 mb-2">
-                Car Racing
-              </h2>
+              <h2 className="text-3xl font-bold text-green-700 mb-2">Car Racing</h2>
               <p className="text-gray-600 mb-6">
-                A fast-paced racing experience. Go fullscreen, push your limits,
-                and aim for the best lap time.
+                A fast-paced racing experience. Go fullscreen, push your limits, and aim for the
+                best lap time.
               </p>
             </div>
             <Link href="/games/racing">
@@ -56,9 +49,7 @@ export default function GamesPage() {
         </section>
 
         {/* Footer note */}
-        <p className="text-center text-gray-500 mt-12">
-          More games coming soon 🚀
-        </p>
+        <p className="text-center text-gray-500 mt-12">More games coming soon 🚀</p>
       </div>
     </main>
   );

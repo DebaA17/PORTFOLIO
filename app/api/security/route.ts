@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server"
+import { NextResponse } from 'next/server';
 
 export async function GET() {
   const securityTxt = `Contact: mailto:security@debasisbiswas.in
@@ -29,13 +29,13 @@ Hiring: https://debasisbiswas.in/#contact
 -----BEGIN PGP SIGNATURE-----
 # Debasis Biswas - Cybersecurity Portfolio
 # Last updated: ${new Date().toISOString()}
------END PGP SIGNATURE-----`
+-----END PGP SIGNATURE-----`;
 
   return new NextResponse(securityTxt, {
     headers: {
-      "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "public, max-age=86400, s-maxage=86400",
-      "X-Content-Type-Options": "nosniff",
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Cache-Control': 'public, max-age=86400, s-maxage=86400',
+      'X-Content-Type-Options': 'nosniff',
     },
-  })
+  });
 }

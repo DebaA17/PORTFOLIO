@@ -1,56 +1,56 @@
-"use client"
+'use client';
 
-import { useEffect, useState } from "react"
-import { Shield, Terminal, AlertTriangle } from "lucide-react"
+import { useEffect, useState } from 'react';
+import { Shield, Terminal, AlertTriangle } from 'lucide-react';
 
 export default function NotFound() {
-  const [mounted, setMounted] = useState(false)
-  const [currentTime, setCurrentTime] = useState("")
+  const [mounted, setMounted] = useState(false);
+  const [currentTime, setCurrentTime] = useState('');
   const [geoData, setGeoData] = useState({
-    ip: "Detecting...",
-    city: "",
-    region: "",
-    country: "",
-    org: "",
-  })
+    ip: 'Detecting...',
+    city: '',
+    region: '',
+    country: '',
+    org: '',
+  });
 
   useEffect(() => {
-    setMounted(true)
+    setMounted(true);
 
-    const updateTime = () => setCurrentTime(new Date().toLocaleString())
-    updateTime()
-    const timeInterval = setInterval(updateTime, 1000)
+    const updateTime = () => setCurrentTime(new Date().toLocaleString());
+    updateTime();
+    const timeInterval = setInterval(updateTime, 1000);
 
-    fetch("https://ipapi.co/json/")
-      .then((res) => res.json())
-      .then((data) =>
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data =>
         setGeoData({
-          ip: data.ip || "Unavailable",
-          city: data.city || "Unknown",
-          region: data.region || "Unknown",
-          country: data.country_name || "Unknown",
-          org: data.org || "Unknown ISP",
+          ip: data.ip || 'Unavailable',
+          city: data.city || 'Unknown',
+          region: data.region || 'Unknown',
+          country: data.country_name || 'Unknown',
+          org: data.org || 'Unknown ISP',
         })
       )
       .catch(() =>
         setGeoData({
-          ip: "Unavailable",
-          city: "N/A",
-          region: "N/A",
-          country: "N/A",
-          org: "N/A",
+          ip: 'Unavailable',
+          city: 'N/A',
+          region: 'N/A',
+          country: 'N/A',
+          org: 'N/A',
         })
-      )
+      );
 
-    return () => clearInterval(timeInterval)
-  }, [])
+    return () => clearInterval(timeInterval);
+  }, []);
 
   if (!mounted) {
     return (
       <div className="min-h-screen bg-[#0a0a14] flex items-center justify-center">
         <div className="text-green-400 font-mono">Loading...</div>
       </div>
-    )
+    );
   }
 
   return (
@@ -63,7 +63,7 @@ export default function NotFound() {
               linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
               linear-gradient(90deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px)
             `,
-            backgroundSize: "20px 20px",
+            backgroundSize: '20px 20px',
           }}
         ></div>
       </div>
@@ -71,7 +71,7 @@ export default function NotFound() {
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-400 to-transparent animate-pulse"></div>
       <div
         className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-400 to-transparent animate-pulse"
-        style={{ animationDelay: "1s" }}
+        style={{ animationDelay: '1s' }}
       ></div>
 
       <div className="max-w-4xl w-full space-y-8 relative z-10">
@@ -93,9 +93,7 @@ export default function NotFound() {
             <p className="text-green-300 text-lg">
               The requested page has been moved to a secure location.
             </p>
-            <p className="text-green-300">
-              Your attempt has been logged for security analysis.
-            </p>
+            <p className="text-green-300">Your attempt has been logged for security analysis.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
@@ -133,19 +131,21 @@ export default function NotFound() {
               </div>
               <div className="space-y-2 text-yellow-300 text-sm">
                 <div>
-                  <div className="text-yellow-400 font-semibold">{">"} Risk Level:</div>
+                  <div className="text-yellow-400 font-semibold">{'>'} Risk Level:</div>
                   <div className="text-yellow-200">LOW</div>
                 </div>
                 <div>
-                  <div className="text-yellow-400 font-semibold">{">"} Source IP:</div>
+                  <div className="text-yellow-400 font-semibold">{'>'} Source IP:</div>
                   <div className="text-yellow-200 break-all">{geoData.ip}</div>
                 </div>
                 <div>
-                  <div className="text-yellow-400 font-semibold">{">"} Location:</div>
-                  <div className="text-yellow-200">{geoData.city}, {geoData.region}, {geoData.country}</div>
+                  <div className="text-yellow-400 font-semibold">{'>'} Location:</div>
+                  <div className="text-yellow-200">
+                    {geoData.city}, {geoData.region}, {geoData.country}
+                  </div>
                 </div>
                 <div>
-                  <div className="text-yellow-400 font-semibold">{">"} ISP:</div>
+                  <div className="text-yellow-400 font-semibold">{'>'} ISP:</div>
                   <div className="text-yellow-200 break-words">{geoData.org}</div>
                 </div>
               </div>
@@ -153,10 +153,11 @@ export default function NotFound() {
           </div>
 
           <div className="mt-4 text-xs text-green-600 text-center italic animate-pulse">
-            <span className="text-green-400">[ TRACE LOG ]</span> {geoData.ip} | {geoData.city}, {geoData.region} via {geoData.org}
+            <span className="text-green-400">[ TRACE LOG ]</span> {geoData.ip} | {geoData.city},{' '}
+            {geoData.region} via {geoData.org}
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

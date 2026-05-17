@@ -2,8 +2,6 @@
 
 ![Preview](/public/preview.png)
 
-
-
 Welcome to the PORTFOLIO project! This is a modern, responsive portfolio built with Next.js and Tailwind CSS, designed to showcase my skills, projects, and contact information in a clean and professional manner.
 
 ## Features
@@ -42,6 +40,7 @@ docker run --rm -p 3000:3000 ghcr.io/debaa17/portfolio:main
 ```
 
 ### Build the image
+
 ```sh
 # With Docker:
 docker build -t portfolio .
@@ -50,6 +49,7 @@ podman build -t portfolio .
 ```
 
 ### Run the container
+
 ```sh
 # With Docker:
 docker run -p 3000:3000 portfolio
@@ -57,13 +57,14 @@ docker run -p 3000:3000 portfolio
 podman run -p 3000:3000 portfolio
 ```
 
-
 ### List images
+
 ```sh
 docker images   # or podman images
 ```
 
 ### Clean up unused containers/images
+
 ```sh
 docker system prune   # or podman system prune
 ```
@@ -96,7 +97,6 @@ Contributions are welcome! Please open issues or submit pull requests for improv
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-<a href="https://www.buymeacoffee.com/debasisbiswas" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
----
+## <a href="https://www.buymeacoffee.com/debasisbiswas" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
 Made with ❤️ by DEBASIS

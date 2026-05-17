@@ -1,6 +1,6 @@
-"use client";
+'use client';
 export const dynamic = 'force-static';
-import { useState } from "react";
+import { useState } from 'react';
 
 const initialBoard = Array(9).fill(null);
 
@@ -15,7 +15,7 @@ function calculateWinner(squares: (string | null)[]) {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  for (let line of lines) {
+  for (const line of lines) {
     const [a, b, c] = line;
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
@@ -32,7 +32,7 @@ export default function TicTacToe() {
   function handleClick(i: number): void {
     if (board[i] || winner) return;
     const newBoard = board.slice();
-    newBoard[i] = xIsNext ? "X" : "O";
+    newBoard[i] = xIsNext ? 'X' : 'O';
     setBoard(newBoard);
     setXIsNext(!xIsNext);
   }
@@ -58,14 +58,20 @@ export default function TicTacToe() {
         ))}
       </div>
       <div className="mb-6">
-        {winner
-          ? <span className="text-green-600 text-2xl font-semibold">Winner: {winner}</span>
-          : board.every(Boolean)
-            ? <span className="text-yellow-600 text-2xl font-semibold">Draw!</span>
-            : <span className="text-blue-600 text-2xl">Next Player: {xIsNext ? "X" : "O"}</span>
-        }
+        {winner ? (
+          <span className="text-green-600 text-2xl font-semibold">Winner: {winner}</span>
+        ) : board.every(Boolean) ? (
+          <span className="text-yellow-600 text-2xl font-semibold">Draw!</span>
+        ) : (
+          <span className="text-blue-600 text-2xl">Next Player: {xIsNext ? 'X' : 'O'}</span>
+        )}
       </div>
-      <button className="px-6 py-3 bg-blue-600 text-white text-xl rounded shadow-lg" onClick={restart}>Restart</button>
+      <button
+        className="px-6 py-3 bg-blue-600 text-white text-xl rounded shadow-lg"
+        onClick={restart}
+      >
+        Restart
+      </button>
     </div>
   );
 }

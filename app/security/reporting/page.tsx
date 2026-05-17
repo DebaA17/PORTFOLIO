@@ -1,10 +1,10 @@
-import type { Metadata } from "next"
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Security Reporting | Debasis Biswas",
+  title: 'Security Reporting | Debasis Biswas',
   description:
-    "Responsible disclosure and secure vulnerability reporting for debasisbiswas.in (PGP key included).",
-}
+    'Responsible disclosure and secure vulnerability reporting for debasisbiswas.in (PGP key included).',
+};
 
 export default function SecurityReportingPage() {
   return (
@@ -14,20 +14,22 @@ export default function SecurityReportingPage() {
           <h1 className="text-lg font-semibold">&gt; Security Reporting</h1>
 
           <p className="mt-4 leading-relaxed">
-            Security is a priority. If you discover a vulnerability, please report it responsibly so it can be fixed
-            safely.
+            Security is a priority. If you discover a vulnerability, please report it responsibly so
+            it can be fixed safely.
           </p>
 
-          <h2 className="mt-6 border-l-4 border-[#00ff88] pl-3 font-semibold">&gt; How to Report</h2>
+          <h2 className="mt-6 border-l-4 border-[#00ff88] pl-3 font-semibold">
+            &gt; How to Report
+          </h2>
           <ul className="mt-3 list-disc space-y-2 pl-6">
             <li>
-              Email: {" "}
+              Email:{' '}
               <a className="text-[#00ffee] hover:underline" href="mailto:security@debasisbiswas.in">
                 security@debasisbiswas.in
               </a>
             </li>
             <li>
-              GitHub Security Advisory (preferred for sensitive details): {" "}
+              GitHub Security Advisory (preferred for sensitive details):{' '}
               <a
                 className="text-[#00ffee] hover:underline"
                 href="https://github.com/DebaA17/PORTFOLIO/security/advisories/new"
@@ -39,7 +41,9 @@ export default function SecurityReportingPage() {
             </li>
           </ul>
 
-          <h2 className="mt-6 border-l-4 border-[#00ff88] pl-3 font-semibold">&gt; What to Include</h2>
+          <h2 className="mt-6 border-l-4 border-[#00ff88] pl-3 font-semibold">
+            &gt; What to Include
+          </h2>
           <ul className="mt-3 list-disc space-y-2 pl-6">
             <li>Description of the issue</li>
             <li>Steps to reproduce / PoC</li>
@@ -47,16 +51,21 @@ export default function SecurityReportingPage() {
             <li>Optional contact details for follow-up</li>
           </ul>
 
-          <h2 className="mt-6 border-l-4 border-[#00ff88] pl-3 font-semibold">&gt; Rules of Engagement</h2>
+          <h2 className="mt-6 border-l-4 border-[#00ff88] pl-3 font-semibold">
+            &gt; Rules of Engagement
+          </h2>
           <ul className="mt-3 list-disc space-y-2 pl-6">
             <li>No public disclosure before resolution</li>
             <li>Do not access, modify, or delete any data</li>
             <li>Do not use automated tools or cause service disruption</li>
           </ul>
 
-          <h2 className="mt-6 border-l-4 border-[#00ff88] pl-3 font-semibold">&gt; Encrypt Your Report (PGP/GPG)</h2>
+          <h2 className="mt-6 border-l-4 border-[#00ff88] pl-3 font-semibold">
+            &gt; Encrypt Your Report (PGP/GPG)
+          </h2>
           <p className="mt-3 leading-relaxed">
-            If your report contains sensitive details, please encrypt it using my PGP public key. Download:{" "}
+            If your report contains sensitive details, please encrypt it using my PGP public key.
+            Download:{' '}
             <a className="text-[#00ffee] hover:underline" href="/pgp.asc">
               /pgp.asc
             </a>
@@ -64,7 +73,7 @@ export default function SecurityReportingPage() {
 
           <div className="mt-3 rounded border border-[#00ff88]/40 bg-[#0b0b0b] p-3">
             <pre className="overflow-x-auto whitespace-pre font-mono text-xs leading-5 text-[#00ff88]">
-{`-----BEGIN PGP PUBLIC KEY BLOCK-----
+              {`-----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBGlY3WQBEAD5R4BKpufFjFhHg3vx9Er2dDgjuDQqSlTwGx8XTGb53E4CpY8g
 ijs5H6yiVl32oF+gBlQ8yS58qLlhv2O1+QRd4nD5sIbqIZ2V933ItFqN14xZgH0O
@@ -127,5 +136,5 @@ Nw==
         </div>
       </div>
     </main>
-  )
+  );
 }

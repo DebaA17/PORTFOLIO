@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
-export const dynamic = "force-static";
+export const dynamic = 'force-static';
 
 export async function GET() {
   const securityTxt = `Contact: mailto:security@debasisbiswas.in
@@ -14,8 +14,8 @@ Encryption: https://debasisbiswas.in/pgp.asc
 
   return new NextResponse(securityTxt, {
     headers: {
-      "Content-Type": "text/plain",
-      "Cache-Control": "public, max-age=86400, s-maxage=86400",
+      'Content-Type': 'text/plain',
+      'Cache-Control': 'public, max-age=86400, s-maxage=86400',
     },
   });
 }

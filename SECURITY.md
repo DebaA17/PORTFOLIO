@@ -6,8 +6,8 @@ Thank you for taking the time to help make debasisbiswas.in more secure.
 
 This portfolio site is a personal project. While it is not actively maintained as a production application, I take security concerns seriously and will respond to valid reports.
 
-| Version        | Supported |
-|----------------|-----------|
+| Version           | Supported |
+| ----------------- | --------- |
 | Current live site | ✅        |
 
 ## Reporting a Vulnerability
@@ -34,4 +34,3 @@ This policy applies only to the code and content hosted on **[debasisbiswas.in](
 ## Thank You
 
 Your efforts to improve the security of this project are appreciated.
-
