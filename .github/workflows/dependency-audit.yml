@@ -15,6 +15,7 @@ permissions:
   security-events: write
 
 on:
+  workflow_dispatch: {}
   schedule:
     # Daily at 02:00 UTC
     - cron: '0 2 * * *'
