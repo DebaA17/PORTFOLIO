@@ -7,6 +7,12 @@ settings:
 overrides:
   postcss@<8.5.10: ^8.5.10
   sanitize-html@<=2.17.3: ^2.17.4
+  picomatch@>=4.0.0 <4.0.4: 4.0.4
+  yaml@>=2.0.0 <2.8.3: 2.8.3
+  next@>=16.0.0-beta.0 <16.2.3: '>=16.2.3'
+  sanitize-html@>=2.17.2 <2.17.3: '>=2.17.3'
+  next@>=16.0.0 <16.2.5: '>=16.2.5'
+  next@>=16.0.0 <16.2.6: '>=16.2.6'
 
 importers:
 
@@ -17,7 +23,7 @@ importers:
         version: 1.4.0
       '@hookform/resolvers':
         specifier: ^3.10.0
-        version: 3.10.0(react-hook-form@7.75.0(react@19.2.6))
+        version: 3.10.0(react-hook-form@7.76.0(react@19.2.6))
       '@radix-ui/react-accordion':
         specifier: latest
         version: 1.2.12(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -119,7 +125,7 @@ importers:
         version: 8.6.0(react@19.2.6)
       framer-motion:
         specifier: latest
-        version: 12.38.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 12.39.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       geist:
         specifier: ^1.7.0
         version: 1.7.0(next@16.2.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6))
@@ -133,7 +139,7 @@ importers:
         specifier: ^0.454.0
         version: 0.454.0(react@19.2.6)
       next:
-        specifier: ^16.2.4
+        specifier: '>=16.2.6'
         version: 16.2.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       next-themes:
         specifier: latest
@@ -146,19 +152,19 @@ importers:
         version: 6.4.0(react@19.2.6)
       react-day-picker:
         specifier: latest
-        version: 10.0.0(react@19.2.6)
+        version: 10.0.1(@types/react@19.2.14)(react@19.2.6)
       react-dom:
         specifier: ^19.2.5
         version: 19.2.6(react@19.2.6)
       react-hook-form:
         specifier: latest
-        version: 7.75.0(react@19.2.6)
+        version: 7.76.0(react@19.2.6)
       react-intersection-observer:
         specifier: latest
         version: 10.0.3(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react-resizable-panels:
         specifier: latest
-        version: 4.11.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 4.11.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react-snowfall:
         specifier: ^2.4.0
         version: 2.4.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -1438,7 +1444,7 @@ packages:
     resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
-      picomatch: ^3 || ^4
+      picomatch: 4.0.4
     peerDependenciesMeta:
       picomatch:
         optional: true
@@ -1453,8 +1459,8 @@ packages:
   fraction.js@5.3.4:
     resolution: {integrity: sha512-1X1NTtiJphryn/uLQz3whtY6jK3fTqoE3ohKs0tT+Ujr1W59oopxmoEh7Lu5p6vBaPbgoM0bzveAW4Qi5RyWDQ==}
 
-  framer-motion@12.38.0:
-    resolution: {integrity: sha512-rFYkY/pigbcswl1XQSb7q424kSTQ8q6eAC+YUsSKooHQYuLdzdHjrt6uxUC+PRAO++q5IS7+TamgIw1AphxR+g==}
+  framer-motion@12.39.0:
+    resolution: {integrity: sha512-+vnLfzrv0MzjLzNl+nvNvR7jdg3q4cxxjz/YvzfifHl0TREtL00cs1RoMTxs+1PzLiEqZGV6gYsBY0oEAYZ24w==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0 || ^19.0.0
@@ -1478,7 +1484,7 @@ packages:
   geist@1.7.0:
     resolution: {integrity: sha512-ZaoiZwkSf0DwwB1ncdLKp+ggAldqxl5L1+SXaNIBGkPAqcu+xjVJLxlf3/S8vLt9UHx1xu5fz3lbzKCj5iOVdQ==}
     peerDependencies:
-      next: '>=13.2.0'
+      next: '>=16.2.6'
 
   get-nonce@1.0.1:
     resolution: {integrity: sha512-FJhYRoDaiatfEkUK8HKlicmu/3SGFD51q3itKDGoSTysQJBnfOcxU5GxnhE1E6soB76MbT0MBtnKJuXyAx+96Q==}
@@ -1572,11 +1578,11 @@ packages:
     resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
     engines: {node: '>=8.6'}
 
-  motion-dom@12.38.0:
-    resolution: {integrity: sha512-pdkHLD8QYRp8VfiNLb8xIBJis1byQ9gPT3Jnh2jqfFtAsWUA3dEepDlsWe/xMpO8McV+VdpKVcp+E+TGJEtOoA==}
+  motion-dom@12.39.0:
+    resolution: {integrity: sha512-Xn7aAcGDhco/JZTXOub64UmaYn73C6J1Po7Fk+8EvkJsNGTqfhon6UJY53vJKXW5v5Zl8HrYsVxv6oPXeGoGLQ==}
 
-  motion-utils@12.36.0:
-    resolution: {integrity: sha512-eHWisygbiwVvf6PZ1vhaHCLamvkSbPIeAYxWUuL3a2PD/TROgE7FvfHWTIH4vMl798QLfMw15nRqIaRDXTlYRg==}
+  motion-utils@12.39.0:
+    resolution: {integrity: sha512-8nadJAJjTtqRkmRF36FoJTrywK9nnFmnPwnSMyxaOCU7GDjN9RTMJIxx9De8ErM+vpPhMccr/6fo5WciyQLnMQ==}
 
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
@@ -1672,7 +1678,7 @@ packages:
       jiti: '>=1.21.0'
       postcss: ^8.5.10
       tsx: ^4.8.1
-      yaml: ^2.4.2
+      yaml: 2.8.3
     peerDependenciesMeta:
       jiti:
         optional: true
@@ -1709,11 +1715,15 @@ packages:
     peerDependencies:
       react: ^16.3.0 || ^17.0.1 || ^18.0.0 || ^19.0.0
 
-  react-day-picker@10.0.0:
-    resolution: {integrity: sha512-lrEXo5wFPsq5LTcayelM3BPueD00v7zbdipAY+EIdPcseVykYwkOWx4Ujn/EtbBvpnp8ZPUHol17HXH6kVbZoA==}
+  react-day-picker@10.0.1:
+    resolution: {integrity: sha512-eNh6BlwcYInWaJtRv18mXQ06Ys/H6rdTZAnTaSdOYJuTpwP1JMCHNd1FDRadA+gbeinq+psdULN5Xnowy9mV8w==}
     engines: {node: '>=18'}
     peerDependencies:
+      '@types/react': '>=16.8.0'
       react: '>=16.8.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   react-dom@19.2.6:
     resolution: {integrity: sha512-0prMI+hvBbPjsWnxDLxlCGyM8PN6UuWjEUCYmZhO67xIV9Xasa/r/vDnq+Xyq4Lo27g8QSbO5YzARu0D1Sps3g==}
@@ -1723,8 +1733,8 @@ packages:
   react-fast-compare@3.2.2:
     resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
 
-  react-hook-form@7.75.0:
-    resolution: {integrity: sha512-Ovv94H+0p3sJ7B9B5QxPuCP1u8V/cHuVGyH55cSwodYDtoJwK+fqk3vjfIgSX59I2U/bU4z0nRJ9HMLpNiWEmw==}
+  react-hook-form@7.76.0:
+    resolution: {integrity: sha512-eKtLGgFeSgkHqQD8J59AMZ9a4uD1D83iSIzt4YlTGD7liDen5rrjcUO1rVIGd9yC1gofryjtHbv+4ny4hkLWlw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -1773,8 +1783,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-resizable-panels@4.11.0:
-    resolution: {integrity: sha512-LPk/AkFDGkg7SsbOyL93ojrE6E7lhrxxDwnYNjfmnSeI6BE7Sje6dB24PXgZk8DeugdeXNk1LO+ohRqIjhxiLw==}
+  react-resizable-panels@4.11.1:
+    resolution: {integrity: sha512-kA4w58V6wYdRLm2rg9pzroZwGlqBLul1FjMP0J8kqTo3zSHtjeH+LXmZaldCo6+HWqs1e5hOcPoajKXdOze37Q==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
@@ -2017,9 +2027,9 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@hookform/resolvers@3.10.0(react-hook-form@7.75.0(react@19.2.6))':
+  '@hookform/resolvers@3.10.0(react-hook-form@7.76.0(react@19.2.6))':
     dependencies:
-      react-hook-form: 7.75.0(react@19.2.6)
+      react-hook-form: 7.76.0(react@19.2.6)
 
   '@img/colour@1.1.0':
     optional: true
@@ -3150,10 +3160,10 @@ snapshots:
 
   fraction.js@5.3.4: {}
 
-  framer-motion@12.38.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
+  framer-motion@12.39.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
-      motion-dom: 12.38.0
-      motion-utils: 12.36.0
+      motion-dom: 12.39.0
+      motion-utils: 12.39.0
       tslib: 2.8.1
     optionalDependencies:
       '@emotion/is-prop-valid': 1.4.0
@@ -3244,11 +3254,11 @@ snapshots:
       braces: 3.0.3
       picomatch: 2.3.2
 
-  motion-dom@12.38.0:
+  motion-dom@12.39.0:
     dependencies:
-      motion-utils: 12.36.0
+      motion-utils: 12.39.0
 
-  motion-utils@12.36.0: {}
+  motion-utils@12.39.0: {}
 
   mz@2.7.0:
     dependencies:
@@ -3353,11 +3363,13 @@ snapshots:
       react: 19.2.6
       tween-functions: 1.2.0
 
-  react-day-picker@10.0.0(react@19.2.6):
+  react-day-picker@10.0.1(@types/react@19.2.14)(react@19.2.6):
     dependencies:
       '@date-fns/tz': 1.4.1
       date-fns: 4.1.0
       react: 19.2.6
+    optionalDependencies:
+      '@types/react': 19.2.14
 
   react-dom@19.2.6(react@19.2.6):
     dependencies:
@@ -3366,7 +3378,7 @@ snapshots:
 
   react-fast-compare@3.2.2: {}
 
-  react-hook-form@7.75.0(react@19.2.6):
+  react-hook-form@7.76.0(react@19.2.6):
     dependencies:
       react: 19.2.6
 
@@ -3406,7 +3418,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.14
 
-  react-resizable-panels@4.11.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
+  react-resizable-panels@4.11.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
