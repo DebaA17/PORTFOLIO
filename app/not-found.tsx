@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Shield, Terminal, AlertTriangle } from "lucide-react"
+import { Shield, Terminal, AlertTriangle, Monitor } from "lucide-react"
 
 export default function NotFound() {
   const [mounted, setMounted] = useState(false)
@@ -13,6 +13,35 @@ export default function NotFound() {
     country: "",
     org: "",
   })
+  const [deviceData, setDeviceData] = useState({
+    browser: "Detecting...",
+    os: "Detecting...",
+    device: "Detecting...",
+    network: "Detecting...",
+  })
+
+  const getBrowserFromUA = (ua: string) => {
+    if (/Edg\//i.test(ua)) return "Edge"
+    if (/Chrome\//i.test(ua) && !/Edg\//i.test(ua)) return "Chrome"
+    if (/Firefox\//i.test(ua)) return "Firefox"
+    if (/Safari\//i.test(ua) && !/Chrome\//i.test(ua)) return "Safari"
+    return "Unknown"
+  }
+
+  const getOSFromUA = (ua: string) => {
+    if (/Windows NT/i.test(ua)) return "Windows"
+    if (/Mac OS X/i.test(ua) && !/iPhone|iPad|iPod/i.test(ua)) return "macOS"
+    if (/iPhone|iPad|iPod/i.test(ua)) return "iOS"
+    if (/Android/i.test(ua)) return "Android"
+    if (/Linux/i.test(ua)) return "Linux"
+    return "Unknown"
+  }
+
+  const getDeviceTypeFromUA = (ua: string) => {
+    if (/Mobi|Android/i.test(ua)) return "Mobile"
+    if (/Tablet|iPad/i.test(ua)) return "Tablet"
+    return "Desktop"
+  }
 
   useEffect(() => {
     setMounted(true)
@@ -21,15 +50,30 @@ export default function NotFound() {
     updateTime()
     const timeInterval = setInterval(updateTime, 1000)
 
-    fetch("https://ipapi.co/json/")
+    const ua = navigator.userAgent || ""
+    const connection = (navigator as Navigator & { connection?: { effectiveType?: string; downlink?: number; rtt?: number } })
+      .connection
+    const networkParts = []
+    if (connection?.effectiveType) networkParts.push(connection.effectiveType)
+    if (typeof connection?.downlink === "number") networkParts.push(`${connection.downlink} Mbps`)
+    if (typeof connection?.rtt === "number") networkParts.push(`${connection.rtt} ms RTT`)
+
+    setDeviceData({
+      browser: getBrowserFromUA(ua),
+      os: getOSFromUA(ua),
+      device: getDeviceTypeFromUA(ua),
+      network: networkParts.length > 0 ? networkParts.join(" | ") : "Unavailable",
+    })
+
+    fetch("/api/geo", { cache: "no-store" })
       .then((res) => res.json())
       .then((data) =>
         setGeoData({
           ip: data.ip || "Unavailable",
           city: data.city || "Unknown",
           region: data.region || "Unknown",
-          country: data.country_name || "Unknown",
-          org: data.org || "Unknown ISP",
+          country: data.country || data.country_name || "Unknown",
+          org: data.org || data.isp || "Unknown ISP",
         })
       )
       .catch(() =>
@@ -147,6 +191,33 @@ export default function NotFound() {
                 <div>
                   <div className="text-yellow-400 font-semibold">{">"} ISP:</div>
                   <div className="text-yellow-200 break-words">{geoData.org}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="max-w-2xl mx-auto">
+            <div className="border border-green-400/30 rounded p-4 bg-black/30 backdrop-blur-sm">
+              <div className="text-green-400 mb-2 font-bold flex items-center gap-2">
+                <Monitor className="w-4 h-4" />
+                CLIENT INFO
+              </div>
+              <div className="space-y-1 text-green-300 text-sm">
+                <div className="flex justify-between">
+                  <span>Browser:</span>
+                  <span className="text-green-400">{deviceData.browser}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>OS:</span>
+                  <span className="text-green-400">{deviceData.os}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Device:</span>
+                  <span className="text-green-400">{deviceData.device}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Network:</span>
+                  <span className="text-green-400 text-right">{deviceData.network}</span>
                 </div>
               </div>
             </div>
