@@ -21,7 +21,7 @@ behavior: "smooth",
 
 // Initialize typewriter effect with improved speed
 useEffect(() => {
-const roles = ["Cybersecurity Enthusiast", "Cloud Security Enthusiast", "Linux Troubleshooter"]
+const roles = ["Cybersecurity Enthusiast", "DevOps Enthusiast", "Cloud Security Enthusiast", "DevSecOps Enthusiast"]
 
 let roleIndex = 0
 let charIndex = 0
@@ -106,7 +106,7 @@ sizes="100vw"
 <div className="profile-image-glow group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"></div>
 <Image
 src="/DEBASIS.jpg"
-alt="Debasis Biswas - BCA Student and Cybersecurity Enthusiast"
+alt="Debasis Biswas - Cybersecurity, DevOps, Cloud Security, and DevSecOps Enthusiast"
 width={200}
 height={200}
 className="profile-image group-hover:scale-105 transition-transform duration-300"

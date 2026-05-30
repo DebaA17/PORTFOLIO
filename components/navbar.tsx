@@ -9,6 +9,9 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
 
+  const pillLinkClassName =
+    "flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-200 bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:scale-105 hover:shadow-xl hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-blue-400"
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -53,11 +56,8 @@ export default function Navbar() {
   }
 
   const navItems = [
-    { id: "chat", label: "Chat", external: true, href: "https://chatgpt.com/g/g-690e05134b88819198752ab1b945e2b8-debasis-chatbot", icon: <MessageCircle size={18} className="mr-1" /> },
     { id: "labs", label: "Labs", external: true, href: "https://labs.debasisbiswas.in", icon: null },
     { id: "certifications", label: "Certifications", external: true, href: "/certifications", icon: null },
-    { id: "terms", label: "Terms & Conditions", external: true, href: "/terms", icon: null },
-    { id: "privacy-policy", label: "Privacy Policy", external: true, href: "/privacy-policy", icon: null },
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
@@ -86,7 +86,7 @@ export default function Navbar() {
                 href={item.href}
                 target={item.href.startsWith('http') ? "_blank" : undefined}
                 rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className={pillLinkClassName}
                 style={{ fontWeight: 700 }}
               >
                 {item.icon}
@@ -96,9 +96,11 @@ export default function Navbar() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`nav-link text-sm font-medium transition-colors hover:text-blue-500 ${
-                  activeSection === item.id ? "active" : "text-gray-300"
-                }`}
+                className={pillLinkClassName}
+                style={{
+                  transform: activeSection === item.id ? "translateY(-1px)" : "none",
+                  boxShadow: activeSection === item.id ? "0 0 0 1px rgba(96, 165, 250, 0.45), 0 10px 25px rgba(37, 99, 235, 0.28)" : undefined,
+                }}
               >
                 {item.label}
               </button>
@@ -123,7 +125,7 @@ export default function Navbar() {
                   href={item.href}
                   target={item.href.startsWith('http') ? "_blank" : undefined}
                   rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-2 py-2 px-4 rounded-md font-semibold bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className={pillLinkClassName}
                   style={{ fontWeight: 700 }}
                 >
                   {item.icon}
@@ -133,9 +135,11 @@ export default function Navbar() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-left py-2 px-4 rounded-md transition-colors ${
-                    activeSection === item.id ? "bg-blue-500/20 text-blue-500" : "text-gray-300 hover:bg-gray-800"
-                  }`}
+                  className={pillLinkClassName}
+                  style={{
+                    justifyContent: "flex-start",
+                    boxShadow: activeSection === item.id ? "0 0 0 1px rgba(96, 165, 250, 0.45), 0 10px 25px rgba(37, 99, 235, 0.28)" : undefined,
+                  }}
                 >
                   {item.label}
                 </button>
