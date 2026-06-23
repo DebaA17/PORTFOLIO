@@ -1,0 +1,15 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ghcr.io/debaa17/portfolio:latest
+    container_name: portfolio-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1

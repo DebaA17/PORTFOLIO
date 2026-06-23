@@ -1,4 +1,11 @@
-# PORTFOLIO
+<h1 align="center">PORTFOLIO</h1>
+
+<div align="center">
+
+[![Docker Build & Security Scan](https://github.com/DebaA17/PORTFOLIO/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/DebaA17/PORTFOLIO/actions/workflows/docker-publish.yml)
+[![Security Headers](https://img.shields.io/endpoint?url=https://debasisbiswas.in/api/security-badge)](https://securityheaders.com/?q=https://debasisbiswas.in&followRedirects=on)
+
+</div>
 
 ![Preview](/public/preview.png)
 

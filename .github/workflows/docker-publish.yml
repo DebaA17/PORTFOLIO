@@ -69,7 +69,28 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      # Build and push Docker image with Buildx (don't push on PR)
+      # Build Docker image locally (load it to the Docker daemon for scanning)
+      - name: Build Docker image (local)
+        uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
+        with:
+          context: .
+          load: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:local-scan
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Run Trivy vulnerability scanner on the local image
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:local-scan
+          format: 'table'
+          exit-code: '1' # Fail workflow if vulnerabilities are found
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+      # Build and push Docker image with Buildx (only if Trivy passed, don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
         id: build-and-push

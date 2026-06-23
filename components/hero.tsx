@@ -3,6 +3,7 @@
 
 import { useEffect, useRef } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { ChevronDown, Terminal } from "lucide-react"
 
 export default function Hero() {
@@ -162,14 +163,13 @@ className="px-8 py-3 bg-transparent border border-blue-500 text-blue-500 rounded
 >
 Get In Touch
 </button>
-<a
-		href="/Debasis_Biswas_Resume.pdf"
-		download
+<Link
+		href="/resume"
 		className="px-8 py-3 bg-green-600 text-white rounded-md hover-lift hover-glow transition-all flex items-center gap-2 group"
 >
 		<Terminal size={18} className="group-hover:animate-pulse" />
-		<span>Download Resume</span>
-</a>
+		<span>View Resume</span>
+</Link>
 </div>
 </div>
 
