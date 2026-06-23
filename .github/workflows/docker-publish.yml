@@ -75,7 +75,7 @@ jobs:
         with:
           context: .
           load: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:local-scan
+          tags: portfolio:local-scan
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -83,7 +83,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@v0.35.0
         with:
-          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:local-scan
+          image-ref: portfolio:local-scan
           format: 'table'
           exit-code: '1' # Fail workflow if vulnerabilities are found
           ignore-unfixed: true
