@@ -47,8 +47,9 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
-# Create non-root user
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup \
+# Create non-root user and clean up global npm/npx to eliminate base-image vulnerabilities
+RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/bin/npm /usr/local/bin/npx \
+    && addgroup -S appgroup && adduser -S appuser -G appgroup \
     && chown -R appuser:appgroup /app
 
 USER appuser
